@@ -52,3 +52,7 @@ Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
   - Set hostname to `wolk`
 - Add user `wolk`: https://www.raspberrypi.org/documentation/linux/usage/users.md
 - Install Node.js
+
+# Gif
+
+https://www.npmjs.com/package/pixel-gif
