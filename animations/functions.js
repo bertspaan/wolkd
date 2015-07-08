@@ -1,6 +1,3 @@
-<<<<<<< Local Changes
-<<<<<<< Local Changes
-
 var rgb = {
   gray: function(value) {
     return [value, value, value];
@@ -11,7 +8,6 @@ var rgb = {
   green: [0, 255, 0],
   blue: [0, 0, 255]
 };
-
 
 module.exports = {
 
@@ -62,7 +58,7 @@ module.exports = {
     var iRed = (Math.sin(pRed) + 1) / 2;
     var iBlue = (Math.sin(pBlue) + 1) / 2;
 
-    return [Math.max(x - iRed, 0) * 255, 0, Math.max((1 - x) - iBlue, 0) * 255];
+    return [Math.max(y - iRed, 0) * 255, 0, Math.max((1 - y) - iBlue, 0) * 255];
 	},
 
 	lighthouse: function(t, i, x, y) {
@@ -95,7 +91,4 @@ module.exports = {
 	  var v = (rad + (t/32)) % 1;
 	  return [v*255,v*255,v*255];
 	}
-}=======
->>>>>>> External Changes
-=======
->>>>>>> External Changes
+}
