@@ -64,9 +64,8 @@ module.exports = {
 	lighthouse: function(t, i, x, y) {
 		var dx = x - 0.5;
 		var dy = y - 0.5;
-
 		var a = Math.atan2(dy, dx) / Math.PI;
-		var rad = Math.abs(a + t) % 1;
+		var rad = Math.abs(a + (t/16)) % 1;
 		var v = (rad < .15) ? 255 : 0;
 
 		return [v, v, v]
