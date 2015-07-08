@@ -1,7 +1,7 @@
 {
   "pixels": 100,
-  "framerate": 15,
-  "bpm": 100,
+  "framerate": 16,
+  "bpm": 120,
   "spi": {
     "device": "/dev/spidev0.0"
   },
