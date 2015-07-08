@@ -2,24 +2,17 @@ var fs = require('fs');
 var path = require('path');
 var lwip = require('lwip');
 var _ = require('highland');
-var WebSocket = require('ws');
+var screen = require('./lib/screen')
 
-var mapping = require('../kamer.json');
+var mapping = require('./mappings/kamer.json');
 
-var dir = './' + process.argv[2] + '/';
+var dir = './animations/gif/' + process.argv[2] + '/';
 
 var i = 0;
 var framerate = 18;
 
 var width = 20;
 var height = width;
-
-var connected = false;
-var ws = new WebSocket('ws://wolk.local:8080');
-
-ws.on('open', function open() {
-  connected = true;
-});
 
 var readDir = _.wrapCallback(fs.readdir);
 var openImage = _.wrapCallback(lwip.open)
@@ -55,14 +48,11 @@ function startAnimation(frames) {
   var i = 0;
   (function() {
     if (frames[i]) {
-      if (connected) {
-        try {
-          ws.send(JSON.stringify(frames[i]));
-        } catch (e) {
-          console.log(e)
-        }
-      }
-    }
+      frames[i].forEach(function(pixel, i) {
+        screen.setPixel(i, pixel);
+      });
+      screen.update();
+  	}
 
     i += 1;
     if (i >= frames.length) {
