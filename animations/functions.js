@@ -58,7 +58,7 @@ module.exports = {
 		var p = (t % framerate / framerate) * 2 * Math.PI;
     var i = (Math.sin(p) + 1) / 2;
 
-    return [Math.abs(x - i) * 255, 0, 0];
+    return [Math.max(x - i, 0) * 255, 0, 0];
 	},
 
 	lighthouse: function(t, i, x, y) {
