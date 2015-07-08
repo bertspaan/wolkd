@@ -37,4 +37,4 @@ function update()
 	t += 1;
 }
 
-timer.setInterval(update, Math.round(1000 / config.framerate));
+setInterval(update, Math.round(1000 / config.framerate));
