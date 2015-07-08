@@ -64,7 +64,7 @@ module.exports = {
 	alternate: function(t, i, x, y) {
 		var a = (t % 20) - 10 > 0;
 
-    if (i % 2 == 0) {
+    if (Math.round(i / 10) % 2 == 0) {
       return a ? rgb.white : rgb.black;
     } else {
       return !a ? rgb.white : rgb.black;
