@@ -1,3 +1,5 @@
+<<<<<<< Local Changes
+<<<<<<< Local Changes
 
 var rgb = {
   gray: function(value) {
@@ -64,20 +66,14 @@ module.exports = {
 	},
 
 	lighthouse: function(t, i, x, y) {
-	  var dx = x - 0.5;
-	  var dy = y - 0.5;
+		var dx = x - 0.5;
+		var dy = y - 0.5;
 
-	  var rad = Math.atan2(dy, dx);
-	  var deg = rad * (180 / Math.PI);
+		var a = Math.atan2(dy, dx) / Math.PI;
+		var rad = Math.abs(a + t) % 1;
+		var v = (rad < .15) ? 255 : 0;
 
-	  var lightAngle = 23;
-
-	  var value = deg - lightAngle + t % 360;
-	  if (value < 0) {
-	    return rgb.black;
-	  } else {
-	    return rgb.gray(255 / lightAngle * value);
-	  }
+		return [v, v, v]
 	},
 
 	rgbtest: function(t, i, x, y) {
@@ -99,4 +95,7 @@ module.exports = {
 	  var v = (rad + (t/32)) % 1;
 	  return [v*255,v*255,v*255];
 	}
-}
+}=======
+>>>>>>> External Changes
+=======
+>>>>>>> External Changes
