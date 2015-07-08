@@ -12,7 +12,7 @@ var rgb = {
 
 
 module.exports = {
-	
+
 	snake: function(t, i, x, y) {
 	  if (Math.abs((t % 100) - i) < 5) {
 	    return rgb.white;
@@ -52,6 +52,15 @@ module.exports = {
 		return rgb.gray((k < 2) ? 255 : 0);
 	},
 
+	police: function(t, i, x, y) {
+    // niet framerate maar police.length * framerate of zo!
+    var framerate = 64;
+		var p = (t % framerate / framerate) * 2 * Math.PI;
+    var i = (Math.sin(p) + 1) / 2;
+
+    return [Math.abs(x - p) * 255, 0, 0];
+	},
+
 	lighthouse: function(t, i, x, y) {
 	  var dx = x - 0.5;
 	  var dy = y - 0.5;
@@ -69,5 +78,5 @@ module.exports = {
 	  }
 
 	}
-	
+
 }
