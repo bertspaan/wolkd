@@ -16,6 +16,13 @@ var animations = {
 	functions: require('./animations/functions')
 }
 
+// show all anims
+if(argv.anims)
+{
+	console.log(Object.keys(animations.functions).join('\n'));
+	process.exit(-1);
+}
+
 var name = argv.anim || 'nederland'
 
 var t = 0;
