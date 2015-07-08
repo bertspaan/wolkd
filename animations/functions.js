@@ -61,11 +61,21 @@ module.exports = {
     return [Math.max(y - iRed, 0) * 255, 0, Math.max((1 - y) - iBlue, 0) * 255];
 	},
 
+	alternate: function(t, i, x, y) {
+		var a = (t % 20) - 10 > 0;
+
+    if (i % 2 == 0) {
+      return a ? rgb.white : rgb.black;
+    } else {
+      return !a ? rgb.white : rgb.black;
+    }
+	},
+
 	lighthouse: function(t, i, x, y)
 	{
 		var dx = x - 0.5;
 		var dy = y - 0.5;
-		
+
 		var k = Math.abs(Math.sin((t/16)))
 		var a = Math.atan2(dy, dx) / Math.PI;
 		var rad = (a + (t/32)) % 1;
