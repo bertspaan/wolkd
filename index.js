@@ -1,7 +1,8 @@
+var argv = require('minimist')(process.argv.slice(2));
+
 var util = require('util');
 var NanoTimer = require('nanotimer');
 var config = require('./config');
-var argv = require('minimist')(process.argv.slice(2));
 
 var screen = require('./lib/screen')
 
