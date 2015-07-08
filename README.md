@@ -30,3 +30,8 @@ Ideeën:
   - hue
   - alles uit/alles aan/één kleur
   - noise
+
+## Raspberry
+
+- Installation: http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display
+- WiFi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md

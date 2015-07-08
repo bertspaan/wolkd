@@ -12,6 +12,7 @@
   "author": "Bert Spaan",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.13.1",
     "minimist": "^1.1.1",
     "nanotimer": "^0.3.10"
   },
