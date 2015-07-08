@@ -20,7 +20,7 @@ var rgb = {
   white: [255, 255, 255],
   red: [255, 0, 0],
   green: [0, 255, 0],
-  bluee: [0, 0, 255]
+  blue: [0, 0, 255]
 };
 
 // Load mapping
