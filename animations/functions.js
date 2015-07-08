@@ -62,12 +62,19 @@ module.exports = {
 	},
 
 	lighthouse: function(t, i, x, y) {
+		
+		function sigmoid(t) {
+			// S(t) = \frac{1}{1 + e^{-t}}
+			return (1 / (1 + Math.exp(-t)))
+		}
+		
 		var dx = x - 0.5;
 		var dy = y - 0.5;
 
 		var a = Math.atan2(dy, dx) / Math.PI;
-		var rad = Math.abs(a + t) % 1;
-		var v = (rad < .15) ? 255 : 0;
+		var rad = (a + (t/16)) % 1;
+		// var v = (rad < .15) ? 255 : 0;
+		var v = Math.pow(rad, 3) * 255;
 
 		return [v, v, v]
 	},
