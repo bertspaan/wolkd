@@ -3,17 +3,12 @@ var NanoTimer = require('nanotimer');
 var config = require('./config');
 var argv = require('minimist')(process.argv.slice(2));
 
-try {
-  var SPI = require('spi');
-} catch(e) {
-  console.log('SPI package not found. Running in debug mode. Run `npm install spi`, or keep debugging!')
-  var colors = require('ansi-256-colors');
-}
+var screen = require('./lib/screen')
 
 var beat = 60 / config.bpm * 1000;
 
 var rgb = {
-  color: function(value) {
+  gray: function(value) {
     return [value, value, value];
   },
   black: [0, 0, 0],
@@ -82,42 +77,19 @@ var animations = {
   }
 }
 
-function main(){
-  var timer = new NanoTimer();
-  timer.setInterval(update, '', Math.round(1000 / config.framerate) + 'm');
-}
-
-// Contains three byte for each pixel (one per color): first blue, then red, then green!
-var buffer = new Buffer(config.pixels * 3);
-
-var setPixel = function(buffer, pixel, r, g, b) {
-  buffer[pixel * 3] = b;
-  buffer[pixel * 3 + 1] = r;
-  buffer[pixel * 3 + 2] = g;
-}
-
-
 var t = 0;
-function update(){
+function update()
+{
+	for (var i = 0; i < config.pixels && i < mapping.length; i++)
+	{
+		var ledPos = mapping[i];
+		var rgb = animations.functions.nederland(t, i, ledPos[0], ledPos[1]);
+		screen.setPixel(i, rgb);
+	}
 
-
-  for (var i = 0; i < config.pixels && i < mapping.length; i++) {
-    var ledPos = mapping[i];
-    var rgb = animations.functions.nederland(t, i, ledPos[0], ledPos[1]);
-
-    setPixel(buffer, i, rgb[0], rgb[1], rgb[2]);
-  }
-
-  for (var c = 0; c < buffer.length / 3; c++) {
-    var b = buffer[c * 3];
-    var r = buffer[c * 3 + 1];
-    var g = buffer[c * 3 + 2];
-
-    process.stdout.write(colors.bg.getRgb(Math.round(r / 51), Math.round(g / 51), Math.round(b / 51)) + ' ');
-  }
-  process.stdout.write(colors.reset + '\r');
-
-  t += 1;
+	screen.update();
+	t += 1;
 }
 
-main();
+var timer = new NanoTimer();
+timer.setInterval(update, '', Math.round(1000 / config.framerate) + 'm');
