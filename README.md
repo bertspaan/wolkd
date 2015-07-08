@@ -30,3 +30,16 @@ Ideeën:
   - hue
   - alles uit/alles aan/één kleur
   - noise
+
+
+## Screen
+
+Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
+
+	var s = require('./lib/screen')
+	for(var i = 0; i < 100; i++) {
+		s.setPixel(i, Math.random()*255, Math.random()*255, Math.random()*255)
+	}
+	s.update()
+
+
