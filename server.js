@@ -12,11 +12,8 @@ app.use(express.static('public'));
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(data) {
     var message = JSON.parse(data);
-
     console.log(message)
-
   });
-
 });
 
 app.get('/config', function(req, res) {
