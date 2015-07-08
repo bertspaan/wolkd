@@ -1,6 +1,3 @@
-<<<<<<< Local Changes
-<<<<<<< Local Changes
-
 var rgb = {
   gray: function(value) {
     return [value, value, value];
