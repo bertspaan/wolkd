@@ -67,11 +67,16 @@ module.exports = {
 	  } else {
 	    return rgb.gray(255 / lightAngle * value);
 	  }
-
 	},
 	
 	rgbtest: function(t, i, x, y) {
-		return [x, y, (x + y) / 2];
+		x += (t/32);
+		y += (t/33);
+		
+		x %= 1;
+		y %= 1;
+		
+		return [x * 255, y * 255, 255 * (x + y) / 2];
 	},
 	
 	ding1: function(t, i, x, y) {
