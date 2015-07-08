@@ -1,7 +1,8 @@
+var argv = require('minimist')(process.argv.slice(2));
+
 var util = require('util');
 var NanoTimer = require('nanotimer');
 var config = require('./config');
-var argv = require('minimist')(process.argv.slice(2));
 
 var screen = require('./lib/screen')
 
@@ -70,12 +71,14 @@ var animations = {
       if (value < 0) {
         return rgb.black;
       } else {
-        return rgb.color(255 / lightAngle * value);
+        return rgb.gray(255 / lightAngle * value);
       }
 
     }
   }
 }
+
+var name = argv.anim || 'nederland'
 
 var t = 0;
 function update()
@@ -83,7 +86,7 @@ function update()
 	for (var i = 0; i < config.pixels && i < mapping.length; i++)
 	{
 		var ledPos = mapping[i];
-		var rgb = animations.functions.nederland(t, i, ledPos[0], ledPos[1]);
+		var rgb = animations.functions[name](t, i, ledPos[0], ledPos[1]);
 		screen.setPixel(i, rgb);
 	}
 
