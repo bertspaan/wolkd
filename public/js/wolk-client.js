@@ -2,16 +2,16 @@ var host = 'wolk.local';
 var ws = new WebSocket('ws://' + host + ':8080');
 var framerate = 15;
 
-function wolkSend(action, id, data) {
+function wolkSend(event, data) {
   try {
     ws.send(JSON.stringify(
       {
-        action: action,
-        id: id,
+        event: event,
         data: data
       }
     ));
   } catch(e) {
+    console.log(e);
   }
 }
 

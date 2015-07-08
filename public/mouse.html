@@ -41,7 +41,6 @@
         var t = new Date().getTime();
         if (t - previousT > 1000 / framerate) {
           wolkSend(
-            'modify',
             'mouse',
             [x, y]
           );

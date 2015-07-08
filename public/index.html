@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/wolk.css">
+  <script src="js/d3.min.js"></script>
+  <script src="js/wolk-client.js"></script>
   <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
@@ -18,10 +20,17 @@
       <div class="one-half column" style="margin-top: 25%">
         <h4>Wolk</h4>
         <p>
-
+          <button id="go">Invert</button>
         </p>
       </div>
     </div>
   </div>
+  <script>
+    var inverted = false;
+    d3.select('#go').on('click', function() {
+      inverted = !inverted;
+      wolkSend('invert', inverted);
+    });
+  </script>
 </body>
 </html>
