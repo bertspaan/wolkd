@@ -16,7 +16,6 @@
     "highland": "^2.5.1",
     "lwip": "0.0.7",
     "minimist": "^1.1.1",
-    "nanotimer": "^0.3.10",
     "ws": "^0.7.2"
   },
   "devDependencies": {
