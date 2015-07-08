@@ -1,13 +1,11 @@
 var argv = require('minimist')(process.argv.slice(2));
 
 var util = require('util');
-var NanoTimer = require('nanotimer');
 var config = require('./config');
 
 var screen = require('./lib/screen')
 
 var beat = 60 / config.bpm * 1000;
-
 
 // Load mapping
 var mapping = require(util.format('./%s/%s', 'mappings', 'kamer.json'));
@@ -39,5 +37,4 @@ function update()
 	t += 1;
 }
 
-var timer = new NanoTimer();
-timer.setInterval(update, '', Math.round(1000 / config.framerate) + 'm');
+timer.setInterval(update, Math.round(1000 / config.framerate));
