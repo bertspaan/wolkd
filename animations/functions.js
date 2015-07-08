@@ -36,12 +36,12 @@ module.exports = {
 
 
 	nederland: function(t, i, x, y) {
-	  if (x < .33) {
-	    return [174, 28, 40];
-	  } else if (x < .66) {
-	    return [255,255,255];
+	  if (y < .33) {
+	    return rgb.red;
+	  } else if (y < .66) {
+	    return rgb.white;
 	  } else {
-	    return [33,70,139];
+	    return rgb.blue;
 	  }
 	},
 
