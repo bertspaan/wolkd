@@ -68,6 +68,19 @@ module.exports = {
 	    return rgb.gray(255 / lightAngle * value);
 	  }
 
-	}
+	},
 	
+	rgbtest: function(t, i, x, y) {
+		return [x, y, (x + y) / 2];
+	},
+	
+	ding1: function(t, i, x, y) {
+	  var dx = x - 0.5;
+	  var dy = y - 0.5;
+
+	  // 0 .. 2*PI
+	  var rad = Math.abs(Math.atan2(dy, dx) / Math.PI);
+	  var v = (rad + t)  % 1;
+	  return [v*255,v*255,v*255];
+	}
 }
