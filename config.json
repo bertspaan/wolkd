@@ -1,0 +1,9 @@
+{
+  "pixels": 100,
+  "framerate": 15,
+  "bpm": 100,
+  "spi": {
+    "device": "/dev/spidev0.0"
+  },
+  "mapping": "kamer.json"
+}

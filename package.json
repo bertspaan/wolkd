@@ -1,0 +1,21 @@
+{
+  "name": "wolkd",
+  "version": "0.0.1",
+  "description": "als geen programma en geen input: doe autatisch programma",
+  "main": "index.js",
+  "bin": {
+    "wolkd": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bert Spaan",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.1.1",
+    "nanotimer": "^0.3.10"
+  },
+  "devDependencies": {
+    "ansi-256-colors": "^1.1.0"
+  }
+}
