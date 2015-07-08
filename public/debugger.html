@@ -12,6 +12,13 @@ canvas {
 <a href="javascript:doeHet('test')">test</a>
 <a href="javascript:doeHet('lighthouse')">lighthouse</a>
 t=<span id="t">-</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+R=<span id="r">-</span>&nbsp;&nbsp;
+G=<span id="g">-</span>&nbsp;&nbsp;
+B=<span id="b">-</span>&nbsp;&nbsp;
+
 <br/>
 <hr/>
 <canvas id="tutorial" width="100" height="100"></canvas>
@@ -20,7 +27,13 @@ t=<span id="t">-</span>
 var scale = 4;
 
 var canvas = document.getElementById('tutorial');
-var debug_t = document.getElementById('t');
+var debug = {
+	t: document.getElementById('t'),
+	r: document.getElementById('r'),
+	g: document.getElementById('g'),
+	b: document.getElementById('b')
+}
+
 var ctx = canvas.getContext('2d');
 
 function rgb(r, g, b)
@@ -31,15 +44,34 @@ function rgb(r, g, b)
 	return "rgb(" + rs + "," + gs + "," + bs + ")";
 }
 
-var ding = 'test'
-function doeHet(d){ding = d; repeat()}
+var ding = 'lighthouse'
+function doeHet(d){
+	ding = d; repeat()
+}
+
+function debugShow(k, v){
+	debug[k].innerText = v.toString();
+}
+
+function debugRGB(rgbValue){
+	debugShow('r', rgbValue[0].toFixed(2))
+	debugShow('g', rgbValue[0].toFixed(2))
+	debugShow('b', rgbValue[0].toFixed(2))
+}
 
 var i = 0;
-setInterval(repeat, 1000);
+setInterval(repeat, 300);
 function repeat(){
-	debug_t.innerText = i.toString()
+	debugShow('t', i);
 	debugEm(dingen[ding]);
-	i += 1;
+	i += .1;
+}
+
+canvas.onmousemove = function(e){
+	var x = e.layerX / canvas.clientWidth;
+	var y = e.layerY / canvas.clientHeight;
+	RGBZ = dingen[ding](i, 0, x, y);
+	debugRGB(RGBZ);
 }
 
 function debugEm(ding)
@@ -48,7 +80,9 @@ function debugEm(ding)
 	{
 		for(var y = 0; y < canvas.height; y += 4)
 		{
-			var Z = ding(i, 0, x, y)
+			var X = x / canvas.width;
+			var Y = y / canvas.width;
+			var Z = ding(i, 0, X, Y)
 			ctx.fillStyle = rgb(Z[0], Z[1], Z[2]);
 			ctx.fillRect(x, y, scale, scale);
 		}
@@ -64,24 +98,15 @@ var dingen = {
 	},
 	
 	lighthouse: function(t, i, x, y) {
-	  var dx = x - 0.5;
-	  var dy = y - 0.5;
+		var dx = x - 0.5;
+		var dy = y - 0.5;
 
-	  var rad = Math.atan2(dy, dx);
-	  var deg = rad * (180 / Math.PI);
+		var a = Math.atan2(dy, dx) / Math.PI;
+		var rad = Math.abs(a + t) % 1;
+		var v = (rad < .15) ? 1 : 0;
 
-	  var lightAngle = 23;
-
-	  var value = deg - lightAngle + t % 360;
-	  
-	  return [0, 0, 0];
-	  
-	  // if (value < 0) {
-	  //   return rgb.black;
-	  // } else {
-	  //   return rgb.gray(255 / lightAngle * value);
-	  // }
-  }
+		return [v, v, v]
+	}
 }
 
 </script>
