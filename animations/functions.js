@@ -61,20 +61,16 @@ module.exports = {
     return [Math.max(y - iRed, 0) * 255, 0, Math.max((1 - y) - iBlue, 0) * 255];
 	},
 
-	lighthouse: function(t, i, x, y) {
-		
-		function sigmoid(t) {
-			// S(t) = \frac{1}{1 + e^{-t}}
-			return (1 / (1 + Math.exp(-t)))
-		}
-		
+	lighthouse: function(t, i, x, y)
+	{
 		var dx = x - 0.5;
 		var dy = y - 0.5;
-
+		
+		var k = Math.abs(Math.sin((t/24)))
 		var a = Math.atan2(dy, dx) / Math.PI;
 		var rad = (a + (t/16)) % 1;
 		// var v = (rad < .15) ? 255 : 0;
-		var v = Math.pow(rad, 3) * 255;
+		var v = Math.pow(rad, 3) * (k > 0.7 ? 255 : 0);
 
 		return [v, v, v]
 	},
