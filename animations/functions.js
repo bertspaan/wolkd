@@ -55,10 +55,12 @@ module.exports = {
 	police: function(t, i, x, y) {
     // niet framerate maar police.length * framerate of zo!
     var framerate = 64;
-		var p = (t % framerate / framerate) * 2 * Math.PI;
-    var i = (Math.sin(p) + 1) / 2;
+		var pRed = (t % framerate / framerate) * 2 * Math.PI;
+    var pBlue = ((t + framerate / 2) % framerate / framerate) * 2 * Math.PI;
+    var iRed = (Math.sin(pRed) + 1) / 2;
+    var iBlue = (Math.sin(pBlue) + 1) / 2;
 
-    return [Math.max(y - i, 0) * 255, 0, Math.max((1 - y) - i, 0) * 255];
+    return [Math.max(y - iRed, 0) * 255, 0, Math.max((1 - y) - iBlue, 0) * 255];
 	},
 
 	lighthouse: function(t, i, x, y) {
