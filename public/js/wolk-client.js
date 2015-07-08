@@ -1,17 +1,24 @@
-var host = 'wolk.local';
-var ws = new WebSocket('ws://' + host + ':8080');
-var framerate = 15;
+var host;
+var port;
+var ws;
+
+d3.json('config', function(config) {
+  hostname = config.hostname;
+  port = config.websocket.port;
+  ws = new WebSocket('ws://' + hostname + ':' + port);
+})
 
 function wolkSend(event, data) {
-  try {
-    ws.send(JSON.stringify(
-      {
-        event: event,
-        data: data
-      }
-    ));
-  } catch(e) {
-    console.log(e);
+  if (ws) {
+    try {
+      ws.send(JSON.stringify(
+        {
+          event: event,
+          data: data
+        }
+      ));
+    } catch(e) {
+      console.log(e);
+    }
   }
 }
-

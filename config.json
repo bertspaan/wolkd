@@ -5,5 +5,11 @@
   "spi": {
     "device": "/dev/spidev0.0"
   },
-  "mapping": "kamer.json"
+  "mapping": "kamer.json",
+  "websocket": {
+    "port": 8080
+  },
+  "http": {
+    "port": 3000
+  }
 }

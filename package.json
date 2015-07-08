@@ -4,7 +4,7 @@
   "description": "als geen programma en geen input: doe autatisch programma",
   "main": "index.js",
   "bin": {
-    "wolkd": "index.js"
+    "wolkd": "server.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,8 @@
   "dependencies": {
     "express": "^4.13.1",
     "minimist": "^1.1.1",
-    "nanotimer": "^0.3.10"
+    "nanotimer": "^0.3.10",
+    "ws": "^0.7.2"
   },
   "devDependencies": {
     "ansi-256-colors": "^1.1.0"
