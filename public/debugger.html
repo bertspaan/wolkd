@@ -1,0 +1,87 @@
+<html>
+<head>
+<style type="text/css">
+canvas {
+	border: 1px solid black;
+	width: 600px;
+	height: 600px;
+}
+</style>	
+</head>
+<body>
+<a href="javascript:doeHet('test')">test</a>
+<a href="javascript:doeHet('lighthouse')">lighthouse</a>
+t=<span id="t">-</span>
+<br/>
+<hr/>
+<canvas id="tutorial" width="100" height="100"></canvas>
+
+<script>
+var scale = 4;
+
+var canvas = document.getElementById('tutorial');
+var debug_t = document.getElementById('t');
+var ctx = canvas.getContext('2d');
+
+function rgb(r, g, b)
+{
+	var rs = Math.round(r * 255);
+	var gs = Math.round(g * 255);
+	var bs = Math.round(b * 255);
+	return "rgb(" + rs + "," + gs + "," + bs + ")";
+}
+
+var ding = 'test'
+function doeHet(d){ding = d; repeat()}
+
+var i = 0;
+setInterval(repeat, 1000);
+function repeat(){
+	debug_t.innerText = i.toString()
+	debugEm(dingen[ding]);
+	i += 1;
+}
+
+function debugEm(ding)
+{
+	for(var x = 0; x < canvas.width; x += 4)
+	{
+		for(var y = 0; y < canvas.height; y += 4)
+		{
+			var Z = ding(i, 0, x, y)
+			ctx.fillStyle = rgb(Z[0], Z[1], Z[2]);
+			ctx.fillRect(x, y, scale, scale);
+		}
+	}
+}
+
+var dingen = {
+	test: function(t, i, x, y){
+		var u = x / canvas.width;
+		var v = y / canvas.height;
+		var z = (t % 100) / 16;
+		return [u, v, z];
+	},
+	
+	lighthouse: function(t, i, x, y) {
+	  var dx = x - 0.5;
+	  var dy = y - 0.5;
+
+	  var rad = Math.atan2(dy, dx);
+	  var deg = rad * (180 / Math.PI);
+
+	  var lightAngle = 23;
+
+	  var value = deg - lightAngle + t % 360;
+	  
+	  return [0, 0, 0];
+	  
+	  // if (value < 0) {
+	  //   return rgb.black;
+	  // } else {
+	  //   return rgb.gray(255 / lightAngle * value);
+	  // }
+  }
+}
+
+</script>
