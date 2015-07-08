@@ -44,3 +44,7 @@ Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
 
 - Installation: http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display
 - WiFi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+
+# Gif
+
+https://www.npmjs.com/package/pixel-gif
