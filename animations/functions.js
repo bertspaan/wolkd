@@ -95,7 +95,4 @@ module.exports = {
 	  var v = (rad + (t/32)) % 1;
 	  return [v*255,v*255,v*255];
 	}
-}=======
->>>>>>> External Changes
-=======
->>>>>>> External Changes
+}
