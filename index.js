@@ -57,6 +57,11 @@ var animations = {
         return [33,70,139];
       }
     },
+	
+	blink: function(t, i, x, y) {
+		var k = t % 4;
+		return rgb.gray((k < 2) ? 255 : 0);
+	},
 
     lighthouse: function(t, i, x, y) {
       var dx = x - 0.5;
