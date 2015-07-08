@@ -85,7 +85,7 @@ module.exports = {
 
 	  // 0 .. 2*PI
 	  var rad = Math.abs(Math.atan2(dy, dx) / Math.PI);
-	  var v = (rad + t)  % 1;
+	  var v = (rad + (t/32)) % 1;
 	  return [v*255,v*255,v*255];
 	}
 }
