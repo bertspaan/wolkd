@@ -34,13 +34,21 @@ Ideeën:
 
 Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
 
-	var s = require('./lib/screen')
-	for(var i = 0; i < 100; i++) {
-		s.setPixel(i, Math.random()*255, Math.random()*255, Math.random()*255)
-	}
-	s.update()
+```js
+  	var s = require('./lib/screen')
+  	for(var i = 0; i < 100; i++) {
+  		s.setPixel(i, Math.random()*255, Math.random()*255, Math.random()*255)
+  	}
+  	s.update()
+```
 
 ## Raspberry
 
 - Installation: http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display
 - WiFi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+- Run `sudo raspi-config`
+  - Enable SPI
+  - Set locale
+  - Set hostname to `wolk`
+- Add user `wolk`: https://www.raspberrypi.org/documentation/linux/usage/users.md
+- Install Node.js
