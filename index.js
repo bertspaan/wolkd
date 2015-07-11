@@ -8,7 +8,7 @@ var screen = require('./lib/screen')
 var beat = 60 / config.bpm * 1000;
 
 // Load mapping
-var mapping = require(util.format('./%s/%s', 'mappings', 'kamer.json'));
+var mapping = require(util.format('./%s/%s', 'mappings', 'wolk.json'));
 
 var animations = {
 	functions: require('./animations/functions')
