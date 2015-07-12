@@ -23,6 +23,9 @@
         <p>
           <button id="go">Invert</button>
         </p>
+        <p>
+          <button id="bpm">BPM</button>
+        </p>
       </div>
     </div>
   </div>
@@ -32,6 +35,49 @@
       inverted = !inverted;
       wolkSend('invert', inverted);
     });
+
+    // BPM
+    var bpmTimeout;
+    var beats = [];
+    var firstMs;
+    var oldMs;
+    d3.select('#bpm').on('click', function() {
+      var ms = new Date().getTime();
+
+      if (bpmTimeout) {
+        clearTimeout(bpmTimeout);
+      }
+
+      bpmTimeout = setTimeout(function() {
+        beats = [];
+        firstMs = undefined;
+        oldMs = undefined;
+      }, 2000);
+
+      if (!firstMs) {
+        firstMs = ms;
+      }
+
+      if (oldMs) {
+        var duration = ms - oldMs;
+        beats.push(duration);
+      }
+
+      if (beats.length > 5) {
+        var sum = beats.reduce(function(d1, d2) { return d1 + d2; });
+        var avgDuration = sum / beats.length;
+
+        wolkSend('bpm', {
+          start: firstMs,
+          bpm: Math.round(60 * 1000 / avgDuration)
+        });
+      }
+
+      oldMs = ms;
+    });
+
+
+
   </script>
 </body>
 </html>

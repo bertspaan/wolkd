@@ -1,40 +1,49 @@
-var argv = require('minimist')(process.argv.slice(2));
-
+var minimist = require('minimist');
 var util = require('util');
 var config = require('./config');
+var server = require('./lib/server');
+var animate = require('./lib/animate');
 
-var screen = require('./lib/screen')
+var argv = minimist(process.argv.slice(2), {
+  default: {
+    screen: config.screen || 'spi',
+    mapping: config.mapping
+  }
+});
 
-var beat = 60 / config.bpm * 1000;
-
-// Load mapping
-var mapping = require(util.format('./%s/%s', 'mappings', 'wolk.json'));
+var screen = require('./lib/screen')(argv.screen);
+var mapping = require(util.format('./mappings/%s.json', config.mapping));
 
 var animations = {
 	functions: require('./animations/functions')
 }
 
-// show all anims
-if(argv.anims)
-{
-	console.log(Object.keys(animations.functions).join('\n'));
-	process.exit(-1);
-}
+var beat = 60 / config.bpm * 1000;
 
-var name = argv.anim || 'nederland'
+var animation = animate(config, mapping, screen, animations, [
+  {
+    name: 'snake',
+    value: 1
+  },
+  {
+    name: 'sine',
+    value: 0.8
+  },
+  {
+    name: 'police',
+    value: 0.4
+  },
+  {
+    name: 'alternate',
+    value: 0.8
+  }
 
-var t = 0;
-function update()
-{
-	for (var i = 0; i < config.pixels && i < mapping.length; i++)
-	{
-		var ledPos = mapping[i];
-		var rgb = animations.functions[name](t, i, ledPos[0], ledPos[1]);
-		screen.setPixel(i, rgb);
-	}
+]);
 
-	screen.update();
-	t += 1;
-}
+server.start(function(event) {
+  animation.remove('alternate');
+  animation.remove('snake');
+})
 
-setInterval(update, Math.round(1000 / config.framerate));
+
+

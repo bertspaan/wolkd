@@ -1,11 +1,12 @@
 {
   "pixels": 100,
-  "framerate": 16,
+  "framerate": 200,
   "bpm": 120,
   "spi": {
     "device": "/dev/spidev0.0"
   },
-  "mapping": "kamer.json",
+  "mapping": "st-bree",
+  "screen": "spi",
   "websocket": {
     "port": 8080
   },
