@@ -11,7 +11,12 @@ var spi = new SPI.Spi(config.spi.device, {
 // Contains three byte for each pixel (one per color): first blue, then red, then green!
 var buffer = new Buffer(config.pixels * 3);
 
+<<<<<<< HEAD:screens/spi.js
 exports.setPixel = function(pixel, r, g, b) {
+=======
+exports.setPixel = function(pixel, r, g, b)
+{
+>>>>>>> 93afe951a1f446657de2240e43651b99edbbcd4c:lib/spiScreen.js
 	var s = pixel * 3;
 	buffer[s] = b;
 	buffer[s + 1] = r;

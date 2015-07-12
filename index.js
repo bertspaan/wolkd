@@ -37,13 +37,9 @@ var animation = animate(config, mapping, screen, animations, [
     name: 'alternate',
     value: 0.8
   }
-
 ]);
 
 server.start(function(event) {
   animation.remove('alternate');
   animation.remove('snake');
 })
-
-
-
