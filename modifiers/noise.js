@@ -10,7 +10,7 @@ module.exports =  {
     if (rand > 0) {
       color.lighten(rand);
     } else {
-      color.darken(rand);
+      color.darken(Math.abs(rand));
     }
     return color.rgbArray();
   }

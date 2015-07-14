@@ -4,7 +4,7 @@ module.exports =  {
   title: 'Hue',
   getPixel: function(rgb, value) {
     var color = Color().rgb(rgb);
-    color = color.rotate(value * 360);
+    color.rotate(value * 360);
     return color.rgbArray();
   }
 };

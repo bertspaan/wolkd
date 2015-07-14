@@ -1,8 +1,10 @@
-// module.exports =  {
-//   title: 'Color: blue',
-//   length: 1,
-//   type: 'continuous',
-//   getFrame: function(t, i, x, y) {
-//     return [0, 0, 255];
-//   }
-// };
+var Color = require('color');
+
+module.exports =  {
+  title: 'Color: blue',
+  getPixel: function(rgb, value) {
+    var color = Color().rgb(rgb);
+    color.blue(value * 255);
+    return color.rgbArray();
+  }
+};
