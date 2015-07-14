@@ -1,6 +1,6 @@
 module.exports =  {
-  title: 'Wave',
-  length: 4,
+  title: 'Single color: red',
+  length: 1,
   type: 'continuous',
   getFrame: function(t, i, x, y) {
     return [0, 0, 255];

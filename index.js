@@ -18,32 +18,7 @@ var mapping = require(util.format('./mappings/%s.json', config.mapping));
 var beat = 60 / config.bpm * 1000;
 
 patternReader(function(patterns) {
-  var animator = animate(config, mapping, screen, patterns, [
-    {
-      name: 'rainbow',
-      value: 1
-    },
-    {
-      name: 'snake',
-      value: 1
-    },
-    {
-      name: 'sine',
-      value: 0
-    },
-    {
-      name: 'police',
-      value: 0
-    },
-    {
-      name: 'alternate',
-      value: 0
-    },
-    {
-      name: 'wave',
-      value: 0
-    }
-  ]);
+  var animator = animate(config, mapping, screen, patterns);
 
   server.start(patterns, function(e) {
     if (e.event === 'set-function') {

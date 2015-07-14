@@ -1,4 +1,25 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url("../fonts/OpenSans-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Main styles
+   ========================================================================== */
+
 body {
+  font-family: "Open Sans";
   background-color: black;
-  color: white;
+  color: #eee;
+}
+
+/* Classes
+   ========================================================================== */
+
+.drag {
+  cursor: pointer;
+  width: 200px;
+  border-radius: 3px;
+  text-align: center;
 }
