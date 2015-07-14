@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="js/reconnecting-websocket.min.js" charset="utf-8"></script>
+    <script src="js/d3.min.js" charset="utf-8"></script>
+    <script src="js/draggabilly.pkgd.min.js"></script>
+    <script src="js/wolk-client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/drag.css">
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+
+    <script>
+
+      function onDragMove(event, pointer, moveVector) {
+        var data = d3.select(this.element).datum();
+        var p = this.position.x / (this.element.parentElement.offsetWidth - this.element.offsetWidth);
+        p = Math.round(p * 100) / 100;
+
+        if (p < 0.1) {
+          p = 0;
+        } else if (p > 0.9) {
+          p = 1;
+        }
+
+        wolkSend('set-function', {
+          name: data.name,
+          value: p
+        });
+      }
+
+      function onDragEnd(event, pointer) {
+        // console.log(onDragEnd)
+        // console.log(this.element.id)
+      }
+
+      function onStaticClick(event, pointer) {
+        // console.log(onDragEnd)
+        // console.log(this.element.id)
+      }
+
+      d3.json('patterns', function(patterns) {
+        d3.select('#container').selectAll('.drag')
+            .data(patterns)
+          .enter()
+            .append('div')
+            .attr('class', 'drag')
+            .html(function(d) {
+              return d.title;
+            })
+            .each(function(d) {
+              var draggie = new Draggabilly(this, {
+                axis: 'x',
+                containment: '#container'
+              });
+
+              draggie.on('dragMove', onDragMove);
+              draggie.on('dragEnd', onDragEnd);
+              draggie.on('staticClick', onStaticClick);
+            });
+      });
+
+
+
+
+    </script>
+  </body>
+</html>

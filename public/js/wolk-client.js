@@ -5,7 +5,7 @@ var ws;
 d3.json('config', function(config) {
   hostname = config.hostname;
   port = config.websocket.port;
-  ws = new WebSocket('ws://' + hostname + ':' + port);
+  ws = new ReconnectingWebSocket('ws://' + hostname + ':' + port);
 })
 
 function wolkSend(event, data) {

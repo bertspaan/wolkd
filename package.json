@@ -4,7 +4,7 @@
   "description": "als geen programma en geen input: doe autatisch programma",
   "main": "index.js",
   "bin": {
-    "wolkd": "server.js"
+    "wolkd": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,6 @@
   "dependencies": {
     "express": "^4.13.1",
     "highland": "^2.5.1",
-    "lwip": "0.0.7",
     "minimist": "^1.1.1",
     "ws": "^0.7.2"
   },

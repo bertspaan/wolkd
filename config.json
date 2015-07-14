@@ -1,12 +1,13 @@
 {
   "pixels": 100,
-  "framerate": 200,
+  "framerate": 30,
   "bpm": 120,
   "spi": {
     "device": "/dev/spidev0.0"
   },
   "mapping": "st-bree",
   "screen": "spi",
+  "hostname": "bertwaag.local",
   "websocket": {
     "port": 8080
   },

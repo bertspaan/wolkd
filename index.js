@@ -3,6 +3,7 @@ var util = require('util');
 var config = require('./config');
 var server = require('./lib/server');
 var animate = require('./lib/animate');
+var patternReader = require('./lib/patterns');
 
 var argv = minimist(process.argv.slice(2), {
   default: {
@@ -14,32 +15,45 @@ var argv = minimist(process.argv.slice(2), {
 var screen = require('./lib/screen')(argv.screen);
 var mapping = require(util.format('./mappings/%s.json', config.mapping));
 
-var animations = {
-	functions: require('./animations/functions')
-}
-
 var beat = 60 / config.bpm * 1000;
 
-var animation = animate(config, mapping, screen, animations, [
-  {
-    name: 'snake',
-    value: 1
-  },
-  {
-    name: 'sine',
-    value: 0.8
-  },
-  {
-    name: 'police',
-    value: 0.4
-  },
-  {
-    name: 'alternate',
-    value: 0.8
-  }
-]);
+patternReader(function(patterns) {
+  var animator = animate(config, mapping, screen, patterns, [
+    {
+      name: 'rainbow',
+      value: 1
+    },
+    {
+      name: 'snake',
+      value: 1
+    },
+    {
+      name: 'sine',
+      value: 0
+    },
+    {
+      name: 'police',
+      value: 0
+    },
+    {
+      name: 'alternate',
+      value: 0
+    },
+    {
+      name: 'wave',
+      value: 0
+    }
+  ]);
 
-server.start(function(event) {
-  animation.remove('alternate');
-  animation.remove('snake');
-})
+  server.start(patterns, function(e) {
+    if (e.event === 'set-function') {
+      animator.setValue(e.data.name, e.data.value);
+    } else if (e.event === 'bpm') {
+      console.log(e)
+    }
+
+    // animation.remove('alternate');
+    // animation.remove('snake');
+  })
+});
+

@@ -51,8 +51,17 @@ Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
   - Set locale
   - Set hostname to `wolk`
 - Add user `wolk`: https://www.raspberrypi.org/documentation/linux/usage/users.md
-- Install Node.js
+  - `sudo adduser wolk`
+  - `sudo usermod -a -G sudo,audio,video,users,netdev,input,spi,i2c,gpio wolk`  
+- Install Node.js: http://weworkweplay.com/play/raspberry-pi-nodejs/
+- Install screen: `sudo apt-get install screen`
+- Install nginx: https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md
 
 # Gif
 
 https://www.npmjs.com/package/pixel-gif
+
+# Draggabilly
+
+http://draggabilly.desandro.com/
+

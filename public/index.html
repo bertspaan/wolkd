@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/wolk.css">
+  <script src="js/reconnecting-websocket.min.js" charset="utf-8"></script>
   <script src="js/d3.min.js"></script>
   <script src="js/wolk-client.js"></script>
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -63,7 +64,7 @@
         beats.push(duration);
       }
 
-      if (beats.length > 5) {
+      if (beats.length >= 4) {
         var sum = beats.reduce(function(d1, d2) { return d1 + d2; });
         var avgDuration = sum / beats.length;
 
