@@ -4,7 +4,7 @@ module.exports =  {
   title: 'Lighthouse',
   length: 4,
   type: 'discrete',
-  getFrame: function(t, i, x, y) {
+  getPixel: function(t, i, x, y) {
     var dx = x - 0.5;
     var dy = y - 0.5;
 

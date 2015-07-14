@@ -14,80 +14,110 @@
   <script src="js/draggabilly.pkgd.min.js"></script>
   <script src="js/d3.min.js"></script>
   <script src="js/wolk-client.js"></script>
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="img/icon.png">
 </head>
 <body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <img src="img/wolk.svg" width="40%"/>
+      </div>
+    </div>
+  </header>
   <div class="container">
     <div class="row">
-      <div class="one-half column">
-        <img src="img/wolk.svg" width="60%"/>
-        <h4>Wolk</h4>
-        <p>
-          <button id="go">Invert</button>
-        </p>
-        <p>
-          <button id="bpm">BPM</button>
-        </p>
-      </div>
-
-      <div id="patterns">
-      </div>
-
+    <h2>Patterns</h2>
+    <div id="patterns">
     </div>
+    <h2>Modifiers</h2>
+    <div id="modifiers">
+    </div>
+    <h2>BPM</h2>
+    <div id="bpm" class="small-rectangle border">
+    </div>
+    <h2>Drag</h2>
+    <div id="mouse-container" class="rectangle border">
+      <div id="mouse" class="border">
+      </div>
+    </div>
+
   </div>
 
 
   <script>
-    function onDragMove(event, pointer, moveVector) {
-      var data = d3.select(this.element).datum();
-      var p = this.position.x / (this.element.parentElement.offsetWidth - this.element.offsetWidth);
-      p = Math.round(p * 100) / 100;
+    function createSliders(url, container, wsEvent) {
+      function onDragMove(event, pointer, moveVector) {
+        var data = d3.select(this.element).datum();
+        var p = this.position.x / (this.element.parentElement.offsetWidth - this.element.offsetWidth);
+        p = Math.round(p * 100) / 100;
 
-      if (p <= 0.03) {
-        p = 0;
-      } else if (p >= 0.97) {
-        p = 1;
+        if (p <= 0.03) {
+          p = 0;
+        } else if (p >= 0.97) {
+          p = 1;
+        }
+
+        wolkSend(wsEvent, {
+          name: data.name,
+          value: p
+        });
       }
 
-      wolkSend('set-function', {
-        name: data.name,
-        value: p
+      function onDragEnd(event, pointer) {
+        // console.log(onDragEnd)
+        // console.log(this.element.id)
+      }
+
+      function onStaticClick(event, pointer) {
+        // console.log(onDragEnd)
+        // console.log(this.element.id)
+      }
+
+      d3.json(url, function(patterns) {
+        d3.select(container).selectAll('.drag')
+            .data(patterns)
+          .enter()
+            .append('div')
+            .attr('class', 'border drag')
+            .html(function(d) {
+              return d.title;
+            })
+            .each(function(d) {
+              var draggie = new Draggabilly(this, {
+                axis: 'x',
+                containment: container
+              });
+
+              draggie.on('dragMove', onDragMove);
+              draggie.on('dragEnd', onDragEnd);
+              draggie.on('staticClick', onStaticClick);
+            });
       });
     }
 
-    function onDragEnd(event, pointer) {
-      // console.log(onDragEnd)
-      // console.log(this.element.id)
-    }
+    createSliders('patterns', '#patterns', 'pattern');
+    createSliders('modifiers', '#modifiers', 'modifier');
 
-    function onStaticClick(event, pointer) {
-      // console.log(onDragEnd)
-      // console.log(this.element.id)
-    }
-
-    d3.json('patterns', function(patterns) {
-      d3.select('#patterns').selectAll('.drag')
-          .data(patterns)
-        .enter()
-          .append('div')
-          .attr('class', 'drag')
-          .html(function(d) {
-            return d.title;
-          })
-          .each(function(d) {
-            var draggie = new Draggabilly(this, {
-              axis: 'x',
-              containment: '#patterns'
-            });
-
-            draggie.on('dragMove', onDragMove);
-            draggie.on('dragEnd', onDragEnd);
-            draggie.on('staticClick', onStaticClick);
-          });
+  </script>
+  <script>
+    var draggie = new Draggabilly('#mouse', {
+      containment: '#mouse-container'
     });
 
+    draggie.on('dragMove', function() {
+      var px = this.position.x / (this.element.parentElement.offsetWidth - this.element.offsetWidth);
+      var py = this.position.y / (this.element.parentElement.offsetHeight - this.element.offsetHeight);
 
+      px = Math.abs(Math.round(px * 100) / 100);
+      py = Math.abs(Math.round(py * 100) / 100);
 
+      console.log(px, py)
+
+      wolkSend('mouse', {
+        x: px,
+        y: py
+      });
+    });
 
   </script>
   <script>

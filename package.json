@@ -12,6 +12,7 @@
   "author": "Bert Spaan",
   "license": "MIT",
   "dependencies": {
+    "color": "git+https://github.com/harthur/color.git",
     "express": "^4.13.1",
     "highland": "^2.5.1",
     "minimist": "^1.1.1",
