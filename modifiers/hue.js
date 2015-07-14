@@ -1,11 +1,11 @@
-var color = require('onecolor');
+var Color = require('color');
 
 module.exports =  {
   title: 'Hue',
   getPixel: function(rgb, value) {
-    var color = one.color(rgb);
-    color = color.hue(value, true);
-    return [color.red(), color, green(), color.blue()];
+    var color = Color().rgb(rgb);
+    color = color.rotate(value * 180);
+    return color.rgbArray();
   }
 };
 
