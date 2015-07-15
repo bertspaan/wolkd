@@ -52,10 +52,20 @@ Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
   - Set hostname to `wolk`
 - Add user `wolk`: https://www.raspberrypi.org/documentation/linux/usage/users.md
   - `sudo adduser wolk`
-  - `sudo usermod -a -G sudo,audio,video,users,netdev,input,spi,i2c,gpio wolk`  
+  - `sudo usermod -a -G sudo,audio,video,users,netdev,input,spi,i2c,gpio wolk`
 - Install Node.js: http://weworkweplay.com/play/raspberry-pi-nodejs/
 - Install screen: `sudo apt-get install screen`
 - Install nginx: https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md
+- Install Shairport: http://www.redsilico.com/multiroom-audio-raspberry-pi
+- Remove annoying hiss:
+  - https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=85811
+  - `sudo nano /boot/config.txt`
+  - Add `disable_audio_dither=1`
+- Install
+
+mopoidu
+
+wolkd as service
 
 # Gif
 
@@ -64,4 +74,5 @@ https://www.npmjs.com/package/pixel-gif
 # Draggabilly
 
 http://draggabilly.desandro.com/
+
 

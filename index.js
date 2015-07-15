@@ -31,7 +31,7 @@ patternReader(function(patterns) {
       } else if (e.event === 'bpm') {
         console.log(e)
       } else if (e.event === 'mouse') {
-        console.log(e)
+        animator.setModifier('mouse', 1, e.data);
       }
     })
   });
