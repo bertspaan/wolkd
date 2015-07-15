@@ -1,4 +1,4 @@
-var config = require('../config.json');
+var config = require(process.env.WOLKD_CONFIG);
 var colors = require('ansi-256-colors');
 
 var buffer = new Buffer(config.pixels * 3);

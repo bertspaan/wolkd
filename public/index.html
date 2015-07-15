@@ -35,9 +35,9 @@
     <h2>BPM</h2>
     <div id="bpm" class="small-rectangle border">
     </div>
-    <h2>Drag</h2>
-    <div id="mouse-container" class="rectangle border">
-      <div id="mouse" class="border">
+    <h2>Searchlight</h2>
+    <div id="searchlight-container" class="rectangle border">
+      <div id="searchlight" class="border">
       </div>
     </div>
 
@@ -100,8 +100,8 @@
 
   </script>
   <script>
-    var draggie = new Draggabilly('#mouse', {
-      containment: '#mouse-container'
+    var draggie = new Draggabilly('#searchlight', {
+      containment: '#searchlight-container'
     });
 
     draggie.on('dragMove', function() {
@@ -113,7 +113,7 @@
 
       console.log(px, py)
 
-      wolkSend('mouse', {
+      wolkSend('searchlight', {
         x: px,
         y: py
       });

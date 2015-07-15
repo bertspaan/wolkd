@@ -6,8 +6,7 @@ module.exports = {
   type: 'discrete',
   getPixel: function(t, i, x, y) {
     if (Math.abs((t % 100) - i) < 5) {
-      return [0, 255, 0
-    ]//rgb.white;
+      return rgb.white;
     } else {
       return rgb.black;
     }

@@ -12,6 +12,9 @@ Twee mogelijkheden:
     npm install
     npm install spi
 
+    cp wolkd.example.config.json ~/wolkd.config.json
+    export WOLKD_CONFIG=/home/bert/wolkd.config.json
+
 ## Colors
 
 https://github.com/One-com/one-color
@@ -71,8 +74,11 @@ wolkd as service
 
 https://www.npmjs.com/package/pixel-gif
 
-# Draggabilly
+# TODO:
 
-http://draggabilly.desandro.com/
+- wolkd as daemon
+- BPM!
+- Meer functies!
+- Automator!
 
 

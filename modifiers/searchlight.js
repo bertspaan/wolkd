@@ -1,7 +1,7 @@
-var radius = 0.5;
+var radius = 0.7;
 
 module.exports =  {
-  title: 'Mouse',
+  title: 'Searchlight',
   type: 'position',
   published: false,
   getPixel: function(t, i, x, y, rgb, value, data) {

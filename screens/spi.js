@@ -1,5 +1,5 @@
 var SPI = require('spi');
-var config = require('../config.json')
+var config = require(process.env.WOLKD_CONFIG);
 
 var spi = new SPI.Spi(config.spi.device, {
 	mode: SPI.MODE['MODE_0'], // always set mode as the first option
