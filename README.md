@@ -15,11 +15,8 @@ Twee mogelijkheden:
     cp wolkd.example.config.json ~/wolkd.config.json
     export WOLKD_CONFIG=/home/bert/wolkd.config.json
 
-## Colors
 
-https://github.com/One-com/one-color
-http://stackoverflow.com/questions/726549/algorithm-for-additive-color-mixing-for-rgb-values
-https://github.com/harthur/color
+## Patterns
 
 ## Modifiers
 
@@ -70,13 +67,22 @@ mopoidu
 
 wolkd as service
 
-# Gif
+## Gif
 
 https://www.npmjs.com/package/pixel-gif
 
+## BPM
+
+- 120 BPM beetje standaard
+- 500ms één beat
+- Kijken hoeveel frames Rasp haalt
+- Stel: 30ms per frame,
+  - 32
+  - 16
+
 # TODO:
 
-- wolkd as daemon
+- wolkd as daemon: http://labs.telasocial.com/raspberry-nodejs-init.d/
 - BPM!
 - Meer functies!
 - Automator!

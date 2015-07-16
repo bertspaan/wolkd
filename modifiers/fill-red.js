@@ -1,11 +1,11 @@
 var Color = require('color');
 
 module.exports =  {
-  title: 'Color: blue',
+  title: 'Alles rood',
   type: 'rgb',
   getPixel: function(rgb, value) {
     var color = Color().rgb(rgb);
-    color.blue(value * 255);
+    color.red(value * 255);
     return color.rgbArray();
   }
 };

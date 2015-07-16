@@ -1,7 +1,7 @@
 var rgb = require('../../lib/color-utils').rgb;
 
 module.exports = {
-  title: 'Snake!',
+  title: 'Slang',
   length: 4,
   type: 'discrete',
   getPixel: function(t, i, x, y) {

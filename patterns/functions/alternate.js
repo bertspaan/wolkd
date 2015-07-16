@@ -1,7 +1,7 @@
 var rgb = require('../../lib/color-utils').rgb;
 
 module.exports =  {
-  title: 'Alternate',
+  title: 'Flip-flop',
   length: 2,
   type: 'discrete',
   getPixel: function(t, i, x, y) {
