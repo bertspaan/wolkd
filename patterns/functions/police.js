@@ -2,7 +2,7 @@ module.exports =  {
   title: 'Politie',
   length: 4,
   type: 'continuous',
-  getPixel: function(t, i, x, y) {
+  getPixel: function(beat, t, i, x, y) {
     // niet framerate maar police.length * framerate of zo!
     var framerate = 64;
     var pRed = (t % framerate / framerate) * 2 * Math.PI;

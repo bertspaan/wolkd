@@ -4,7 +4,7 @@ module.exports =  {
   title: 'Vuurtoren',
   length: 4,
   type: 'continuous',
-  getPixel: function(t, i, x, y) {
+  getPixel: function(beat, t, i, x, y) {
     var nt = t * 10 % 720;
 
     if (nt <= 360) {

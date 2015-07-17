@@ -4,7 +4,7 @@ module.exports =  {
   title: 'Searchlight',
   type: 'position',
   published: false,
-  getPixel: function(t, i, x, y, rgb, value, data) {
+  getPixel: function(beat, t, i, x, y, rgb, value, data) {
     var dx = x - data.x;
     var dy = y - data.y;
     var d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));

@@ -39,7 +39,7 @@ patternReader(function(patterns) {
       } else if (e.event === 'modifier') {
         animator.setModifier(e.data.name, e.data.value);
       } else if (e.event === 'bpm') {
-        console.log(e)
+        animator.setBpm(e.data.bpm, e.data.startMs);
       } else if (e.event === 'searchlight') {
         if (searchlightTimeout) {
           clearTimeout(searchlightTimeout);

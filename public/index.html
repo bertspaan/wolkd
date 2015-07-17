@@ -159,7 +159,7 @@
         var avgDuration = sum / beats.length;
 
         wolkSend('bpm', {
-          start: firstMs,
+          startMs: firstMs,
           bpm: Math.round(60 * 1000 / avgDuration)
         });
       }
