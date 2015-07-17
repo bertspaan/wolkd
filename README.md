@@ -103,6 +103,10 @@ https://www.npmjs.com/package/pixel-gif
 
 - BPM!
 - Meer functies!
-- Automator!
+- Autopilot!
+- programs, dir met combi's van patterns en modifiers!
+- knopjes met achtergrondkleur of patroontjes!
+
+hue en sinus-modifier, door tijd!
 
 

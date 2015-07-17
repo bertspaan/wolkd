@@ -5,6 +5,10 @@
   "spi": {
     "device": "/dev/spidev0.0"
   },
+  "autopilot": {
+    "enabled": true,
+    "timeout": 60000
+  },
   "mapping": "st-bree",
   "screen": "spi",
   "hostname": "bertwaag.local",

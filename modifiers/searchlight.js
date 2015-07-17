@@ -1,4 +1,4 @@
-var radius = 0.7;
+var radius = 0.3;
 
 module.exports =  {
   title: 'Searchlight',
@@ -12,8 +12,8 @@ module.exports =  {
     if (d > radius) {
       return [0, 0, 0];
     } else {
-      var v = (Math.cos(d / radius * Math.PI) + 1) / 2;
-      // console.log(v)
+      var v = (Math.cos(d / radius * Math.PI) + 1) / 2 + 0.2;
+      v = Math.min(v, 1);
       return [Math.round(rgb[0] * v), Math.round(rgb[1] * v), Math.round(rgb[2] * v)];
     }
   }

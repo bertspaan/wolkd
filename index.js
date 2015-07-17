@@ -22,8 +22,18 @@ var beat = 60 / config.bpm * 1000;
 patternReader(function(patterns) {
   modifierReader(function(modifiers) {
     var animator = animate(config, mapping, screen, patterns, modifiers);
+    var searchlightTimeout;
+
+    var autopilot;
+    if (config.autopilot.enabled) {
+      autopilot = require('./lib/autopilot')(config, animator, patterns, modifiers);
+    }
 
     server.start(config, patterns, modifiers, function(e) {
+      if (autopilot) {
+        autopilot.reset();
+      }
+
       if (e.event === 'pattern') {
         animator.setPattern(e.data.name, e.data.value);
       } else if (e.event === 'modifier') {
@@ -31,6 +41,14 @@ patternReader(function(patterns) {
       } else if (e.event === 'bpm') {
         console.log(e)
       } else if (e.event === 'searchlight') {
+        if (searchlightTimeout) {
+          clearTimeout(searchlightTimeout);
+        }
+
+        searchlightTimeout = setTimeout(function() {
+          animator.setModifier('searchlight', 0, e.data);
+        }, 10000);
+
         animator.setModifier('searchlight', 1, e.data);
       }
     })
