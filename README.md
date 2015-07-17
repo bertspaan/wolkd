@@ -77,12 +77,30 @@ https://www.npmjs.com/package/pixel-gif
 - 500ms één beat
 - Kijken hoeveel frames Rasp haalt
 - Stel: 30ms per frame,
-  - 32
-  - 16
+  - 16 frames per beat!
+  - Ruim zitten
+    - 80 BPM: 21 f/s
+    - 100 BPM: 26 f/s
+    - 120 BPM: 32 f/s
+    - 160 BPM: 42 f/s
+
+- Dus: maak functie die elke x ms draait, en corrigeert
+
+## SCP
+
+    scp -r ./ wolk@wolk.local:~/wolkd.new
+
+## Daemon
+
+  From http://www.slidequest.com/Taboca/70ang:
+
+  1. `sudo npm install -g forever`
+  2. `sudo cp ./daemon/wolk /etc/init.d/wolkd`
+  3. `sudo chmod 755 /etc/init.d/wolkd`
+  4. `update-rc.d wolkd defaults`
 
 # TODO:
 
-- wolkd as daemon: http://labs.telasocial.com/raspberry-nodejs-init.d/
 - BPM!
 - Meer functies!
 - Automator!

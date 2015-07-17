@@ -1,0 +1,21 @@
+#!/bin/sh
+#/etc/init.d/wolkd
+
+export PATH=$PATH:/usr/local/bin
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+export WOLKD_CONFIG=/home/wolk/wolkd.config.json
+
+case "$1" in
+  start)
+  exec forever --sourceDir=/home/wolk/wolkd -p /home/wolkd/.forever index.js
+  ;;
+stop)
+  exec forever stop --sourceDir=/home/wolk/wolkd index.js
+  ;;
+*)
+  echo "Usage: /etc/init.d/wolkd {start|stop}"
+  exit 1
+  ;;
+esac
+
+exit 0
