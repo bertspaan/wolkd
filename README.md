@@ -1,12 +1,12 @@
-<img width="150px" src="public/img/wolk-logo.png" />
+<img width="300px" src="public/img/wolk-logo.png" />
 
 # wolkd
 
-![](public/img/wolk.jpg)
-
 Server and user interface to control WS2801 RGB LED strips via SPI. Used to control [wolk.bike](http://wolk.bike), a bike skelter sound system cloud built for [Welcome to the Village 2015](http://welcometothevillage.nl/project/de-wolk) in Leeuwarden, The Netherlands.
 
-See [wolk.bike](http://wolk.bike) for more pictures.
+See [wolk.bike](http://wolk.bike) for photos of wolk.bike.
+
+![](public/img/wolk.jpg)
 
 ## Installation
 
