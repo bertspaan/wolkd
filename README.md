@@ -1,4 +1,4 @@
-![](public/img/wolk-logo.png)
+<img width="150px" src="public/img/wolk-logo.png" />
 
 # wolkd
 
