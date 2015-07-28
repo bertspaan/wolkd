@@ -20,7 +20,7 @@ See [wolk.bike](http://wolk.bike) for more pictures.
 
 ## Patterns
 
-## Screen
+## Screens
 
 Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
 
@@ -32,7 +32,9 @@ for(var i = 0; i < 100; i++) {
 s.update()
 ```
 
-## Raspberry
+## Mappings
+
+## Raspberry Pi
 
 - Installation: http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display
 - WiFi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
