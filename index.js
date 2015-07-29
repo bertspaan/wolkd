@@ -35,8 +35,10 @@ patternReader(function(patterns) {
     }
 
     server.start(config, patterns, modifiers, function(e) {
-      if (autopilot) {
-        autopilot.reset();
+      if (e.event === 'pattern' || e.event === 'modifier') {
+        if (autopilot) {
+          autopilot.reset();
+        }
       }
 
       if (e.event === 'pattern') {
@@ -52,7 +54,7 @@ patternReader(function(patterns) {
 
         searchlightTimeout = setTimeout(function() {
           animator.setModifier('searchlight', 0, e.data);
-        }, 10000);
+        }, 2000);
 
         animator.setModifier('searchlight', 1, e.data);
       }
