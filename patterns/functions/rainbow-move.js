@@ -1,4 +1,4 @@
-var Color = require("color")
+var Color = require('color');
 
 module.exports =  {
   title: 'Regenboog 2',

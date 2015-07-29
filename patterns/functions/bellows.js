@@ -1,5 +1,3 @@
-var Color = require("color");
-
 module.exports =  {
   title: 'Blaasbalg',
   length: 4,

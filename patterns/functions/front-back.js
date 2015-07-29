@@ -5,7 +5,7 @@ module.exports =  {
   length: 2,
   type: 'discrete',
   getPixel: function(beat, t, i, x, y) {
-    var front = beat % 2 == 0;
+    var front = (beat % 2) === 0;
 
     if (y <= 0.5) {
       return front ? rgb.black : rgb.white;

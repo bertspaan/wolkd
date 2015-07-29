@@ -22,8 +22,6 @@ var screen = require('./lib/screen')(config, argv.screen);
 var mapping = require(util.format('./mappings/%s.json', argv.mapping));
 var autopilotEnabled = argv.autopilot;
 
-var beat = 60 / config.bpm * 1000;
-
 patternReader(function(patterns) {
   modifierReader(function(modifiers) {
     var animator = animate(config, mapping, screen, patterns, modifiers);
@@ -31,7 +29,7 @@ patternReader(function(patterns) {
 
     var autopilot;
     if (autopilotEnabled) {
-      autopilot = require('./lib/autopilot')(config, animator, patterns, modifiers);
+      autopilot = require('./lib/autopilot')(config, animator, patterns);
     }
 
     server.start(config, patterns, modifiers, function(e) {
@@ -58,6 +56,6 @@ patternReader(function(patterns) {
 
         animator.setModifier('searchlight', 1, e.data);
       }
-    })
+    });
   });
 });

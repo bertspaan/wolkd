@@ -1,5 +1,3 @@
-var Color = require('color');
-
 module.exports =  {
   title: 'Alleen groen',
   type: 'rgb',

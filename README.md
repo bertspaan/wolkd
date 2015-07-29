@@ -51,6 +51,17 @@ TODO: functions, frames
 TODO: function signature
 TODO: animated GIFs
 
+```js
+module.exports =  {
+  title: 'Pattern title',
+  length: 4,
+  type: 'continuous',
+  getPixel: function(beat, t, i, x, y) {
+    return [r, g, b];
+  }
+};
+```
+
 ## Screens
 
 ```

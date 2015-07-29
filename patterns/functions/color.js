@@ -2,7 +2,7 @@ module.exports =  {
   title: 'Eén kleur',
   length: 4,
   type: 'continuous',
-  getPixel: function(beat, t, i, x, y) {
+  getPixel: function() {
     return [255, 0, 0];
   }
 };

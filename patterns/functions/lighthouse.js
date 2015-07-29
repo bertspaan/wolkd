@@ -16,7 +16,6 @@ module.exports =  {
       var dAngle = Math.abs(pixelAngle - lighthouseAngle) % 360;
       var r = dAngle > 180 ? 360 - dAngle : dAngle;
 
-
       if (r > beamAngle) {
         return [0, 0, 0];
       } else {
@@ -27,4 +26,4 @@ module.exports =  {
       return [0, 0, 0];
     }
   }
-}
+};

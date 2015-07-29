@@ -24,7 +24,7 @@
     "wolkd": "index.js"
   },
   "scripts": {
-    "test": "jshint *.js && jscs *.js"
+    "test": "jshint *.js lib/*.js modifiers/*.js screens/*.js patterns/*/*.js && jscs *.js lib/*.js modifiers/*.js screens/*.js patterns/*/*.js"
   },
   "author": "Bert Spaan",
   "license": "MIT",
