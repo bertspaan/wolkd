@@ -1,13 +1,30 @@
 {
   "name": "wolkd",
-  "version": "0.0.1",
-  "description": "als geen programma en geen input: doe autatisch programma",
+  "version": "0.5.0",
+  "description": "Server and user interface to control WS2801 RGB LED strips via SPI",
   "main": "index.js",
+  "keywords": [
+    "spi",
+    "ws2801",
+    "led",
+    "raspberry",
+    "pi",
+    "spi",
+    "rgb",
+    "strip",
+    "wolk",
+    "bike"
+  ],
+  "homepage": "http://wolk.bike",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/bertspaan/wolkd.git"
+  },
   "bin": {
     "wolkd": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jshint *.js && jscs *.js"
   },
   "author": "Bert Spaan",
   "license": "MIT",
@@ -16,9 +33,25 @@
     "express": "^4.13.1",
     "highland": "^2.5.1",
     "minimist": "^1.1.1",
-    "ws": "^0.7.2"
+    "ws": "^0.7.2",
+    "ansi-256-colors": "^1.1.0"
   },
   "devDependencies": {
-    "ansi-256-colors": "^1.1.0"
+    "jscs": "^1.10.0",
+    "jshint": "^2.6.0",
+    "tape": "^3.4.0"
+  },
+  "jshintConfig": {
+    "node": true,
+    "globalstrict": false,
+    "undef": true,
+    "unused": true,
+    "noarg": true
+  },
+  "jscsConfig": {
+    "preset": "airbnb",
+    "requireCamelCaseOrUpperCaseIdentifiers": null,
+    "disallowMultipleVarDecl": true,
+    "requireMultipleVarDecl": null
   }
 }

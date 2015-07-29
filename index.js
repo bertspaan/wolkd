@@ -8,14 +8,19 @@ var patternReader = require('./lib/patterns');
 var modifierReader = require('./lib/modifiers');
 
 var argv = minimist(process.argv.slice(2), {
+  boolean: [
+    'autopilot'
+  ],
   default: {
     screen: config.screen || 'spi',
-    mapping: config.mapping
+    mapping: config.mapping,
+    autopilot: (config.autopilot && config.autopilot.enabled)
   }
 });
 
 var screen = require('./lib/screen')(config, argv.screen);
 var mapping = require(util.format('./mappings/%s.json', argv.mapping));
+var autopilotEnabled = argv.autopilot;
 
 var beat = 60 / config.bpm * 1000;
 
@@ -25,7 +30,7 @@ patternReader(function(patterns) {
     var searchlightTimeout;
 
     var autopilot;
-    if (config.autopilot.enabled) {
+    if (autopilotEnabled) {
       autopilot = require('./lib/autopilot')(config, animator, patterns, modifiers);
     }
 

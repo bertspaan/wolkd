@@ -2,39 +2,117 @@
 
 # wolkd
 
-Server and user interface to control WS2801 RGB LED strips via SPI. Used to control [wolk.bike](http://wolk.bike), a bike skelter sound system cloud built for [Welcome to the Village 2015](http://welcometothevillage.nl/project/de-wolk) in Leeuwarden, The Netherlands.
+Node.js server and user interface to control WS2801 RGB LED strips via SPI. Built to control [wolk.bike](http://wolk.bike), a __bike skelter sound system cloud__ commisioned by [Welcome to the Village 2015](http://welcometothevillage.nl/project/de-wolk).
 
-See [wolk.bike](http://wolk.bike) for photos of wolk.bike.
+wolkd can display mathematical functions, frame-by-frame animations (and even animated GIFs!) on RGB LED strips, and can be controlled via a [web interface](#user-interface) — with your laptop, smartphone or tablet! wolkd lets you write animations in terms of either a pixel's LED strip index or x and y coordinates using a [mapping file](#mappings). And wolkd has a 256 color ANSI terminal debug mode!
+
+wolkd works well in conjunction with [LED Strip Mapper](https://github.com/bertspaan/led-strip-mapper.
 
 ![](public/img/wolk.jpg)
 
+See [http://wolk.bike](http://wolk.bike) for more photos!
+
 ## Installation
 
+    git clone https://github.com/bertspaan/wolkd.git
+    cd wolkd
     npm install
+
+If your device has an SPI interface (Raspberry PIs have one!), you can install [node-spi](https://github.com/RussTheAerialist/node-spi):
+
     npm install spi
+
+Please note: without node-spi, wolkd will run in console mode!
+
+wolkd expects the environment variable `WOLKD_CONFIG` to point to the path of the wolkd configuration JSON file.
 
     cp wolkd.example.config.json ~/wolkd.config.json
     export WOLKD_CONFIG=/home/bert/wolkd.config.json
 
+wolkd's [configuration](#configuration) and [command line arguments](#command-line-arguments) are described in detail below.
+
+To run wolkd, type:
+
     node index.js
+
+When running wolkd on your laptop and/or in console mode, the RGB LED output is mapped to the terminal:
+
+![](public/img/wolkd.png)
+
+## User interface
+
+After starting wolkd, a web interface to control wolkd and mix patterns is available on [http://localhost:3000](http://localhost:3000/):
+
+![](public/img/ui.jpg)
 
 ## Patterns
 
+TODO: functions, frames
+TODO: function signature
+TODO: animated GIFs
+
 ## Screens
 
-Just `s.setPixel(pixel, r, g, b)` and then `s.update()` to update the screen
-
-```js
-var s = require('./lib/screen')
-for(var i = 0; i < 100; i++) {
-	s.setPixel(i, Math.random()*255, Math.random()*255, Math.random()*255)
+```
+exports.setPixel = function(pixel, r, g, b) {
+  // Set RGB color of individual indexed pixel in buffer
 }
-s.update()
+
+exports.update = function update() {
+  // Send buffer to screen, called each frame
+}
 ```
 
 ## Mappings
 
+TODO: mappings!
+
+## Autopilot
+
+TODO: autopilot!
+
+## Configuration
+
+```js
+{
+  "pixels": 100,                // Number of pixels on LED strip
+  "framerate": 30,              // Framerate wolkd tries to achieve
+  "bpm": 120,                   // Default BPM
+  "framesPerBeat": 16,          // Frames per beat - constant if BPM changes
+  "spi": {
+    "device": "/dev/spidev0.0"  // SPI device
+  },
+  "autopilot": {
+    "enabled": true,            // Enable/disable [autopilot](#autopilot)
+    "inputTimeout": 120000,     // Time in milliseconds before autopilot starts
+                                //   after user input
+    "patternTimeout": 60000     // Time after which autopilot changes patterns
+  },
+  "mapping": "st-bree",         // Default [mapping file](#mappings)
+  "screen": "spi",              // Default [screen](#screens)
+  "hostname": "wolkd.local",    // Used by web interface
+  "websocket": {
+    "port": 8080                // Used by web interface
+  },
+  "http": {
+    "port": 3000                // Used by web interface
+  }
+}
+```
+
+## Command line arguments
+
+You can override some of the options set in the configuration file with the following command line arguments:
+
+| Argument                   | Example             | Description
+|:---------------------------|:--------------------|:-------------
+| `--screen <screen>`        | `--screen console`  | Choose [screen](#screens)
+| `--mapping <mapping>`      | `--mapping wolk`    | Choose [mapping file](#mappings)
+| `--autopilot <true|false>` | `--autopilot false` | Enable or disable [autopilot](#autopilot)
+
 ## Raspberry Pi
+
+Instructions for installing wolkd on a Raspberry Pi:
 
 - Installation: http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display
 - WiFi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
@@ -60,5 +138,14 @@ s.update()
 - knopjes met achtergrondkleur of patroontjes!
 - hue en sinus-modifier, door tijd!
  - fft/audio-in
+ - Add suport [Open Pixel Control](http://openpixelcontrol.org/)
+ - [Fadecandy Controller board](https://github.com/scanlime/fadecandy)
+  screen
+ - websockets screen
 
 ## See also
+
+-
+-
+-
+-
