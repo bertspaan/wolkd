@@ -1,5 +1,3 @@
-var rgb = require('../../lib/color-utils').rgb;
-
 module.exports =  {
   title: 'Flip-flop',
   length: 2,
@@ -8,9 +6,9 @@ module.exports =  {
     var a = (beat % 2) === 0;
 
     if (Math.round(i / 10) % 2 === 0) {
-      return a ? rgb.white : rgb.black;
+      return a ? [255, 255, 255] : [0, 0, 0];
     } else {
-      return !a ? rgb.white : rgb.black;
+      return !a ? [255, 255, 255] : [0, 0, 0];
     }
   }
 };

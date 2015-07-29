@@ -145,6 +145,8 @@ Instructions for installing wolkd on a Raspberry Pi:
 
 ## TODO
 
+- Frame animations with configurable speed
+- Patterns either continuous (each frame) or per beat
 - Create _programs_, combinations of patterns that work well together
 - Add colors or images to buttons in user interface
 - Add modifiers which change hue/color through time

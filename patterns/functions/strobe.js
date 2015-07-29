@@ -1,11 +1,9 @@
-var rgb = require('../../lib/color-utils').rgb;
-
-module.exports =  {
-  title: 'Stroboscoop',
+module.exports = {
+  title: 'Strobe',
   length: 2,
   type: 'discrete',
   getPixel: function(beat, t) {
     var on = (t % 2) === 0;
-    return on ? rgb.white : rgb.black;
+    return on ? [255, 255, 255] : [0, 0, 0];
   }
 };

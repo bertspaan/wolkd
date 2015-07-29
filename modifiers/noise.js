@@ -13,6 +13,7 @@ module.exports =  {
     } else {
       color.darken(Math.abs(rand));
     }
+
     return color.rgbArray();
   }
 };
