@@ -4,9 +4,9 @@
 
 Node.js server and user interface to control WS2801 RGB LED strips via SPI. Built to control [wolk.bike](http://wolk.bike), a __bike skelter sound system cloud__ commisioned by [Welcome to the Village 2015](http://welcometothevillage.nl/project/de-wolk).
 
-wolkd can display mathematical functions, frame-by-frame animations (and even animated GIFs!) on RGB LED strips, and can be controlled via a [web interface](#user-interface) — with your laptop, smartphone or tablet! wolkd lets you write animations in terms of either a pixel's LED strip index or x and y coordinates using a [mapping file](#mappings). And wolkd has a 256 color ANSI terminal debug mode!
+wolkd can display mathematical functions, frame-by-frame animations (and even animated GIFs!) on RGB LED strips, and can be controlled via a [web interface](#user-interface) — with your laptop, smartphone or tablet. wolkd lets you write animations in terms of either a pixel's LED strip index or x and y coordinates using a [mapping file](#mappings). And wolkd has a 256 color ANSI terminal debug mode!
 
-wolkd works well in conjunction with [LED Strip Mapper](https://github.com/bertspaan/led-strip-mapper.
+wolkd works well in conjunction with [LED Strip Mapper](https://github.com/bertspaan/led-strip-mapper).
 
 ![](public/img/wolk.jpg)
 
@@ -134,18 +134,18 @@ Instructions for installing wolkd on a Raspberry Pi:
 
 ## TODO
 
-- programs, dir met combi's van patterns en modifiers!
-- knopjes met achtergrondkleur of patroontjes!
-- hue en sinus-modifier, door tijd!
- - fft/audio-in
- - Add suport [Open Pixel Control](http://openpixelcontrol.org/)
- - [Fadecandy Controller board](https://github.com/scanlime/fadecandy)
-  screen
- - websockets screen
+- Create _programs_, combinations of patterns that work well together
+- Add colors or images to buttons in user interface
+- Add modifiers which change hue/color through time
+- FFT audio analysis and beat detection using microphone
+- Add [Open Pixel Control](http://openpixelcontrol.org/) support
+- Send output to [Fadecandy Controller board](https://github.com/scanlime/fadecandy)
+- Add websocket screen and HTML Canvas viewer
 
 ## See also
 
--
--
--
--
+- http://wolk.bike/
+- https://github.com/RussTheAerialist/node-spi
+- https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md
+- https://github.com/scanlime/fadecandy
+- https://learn.adafruit.com/led-art-with-fadecandy/intro
