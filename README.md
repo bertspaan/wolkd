@@ -27,7 +27,7 @@ Please note: without node-spi, wolkd will run in console mode!
 wolkd expects the environment variable `WOLKD_CONFIG` to point to the path of the wolkd configuration JSON file.
 
     cp wolkd.example.config.json ~/wolkd.config.json
-    export WOLKD_CONFIG=/home/bert/wolkd.config.json
+    export WOLKD_CONFIG=/home/wolk/wolkd.config.json
 
 wolkd's [configuration](#configuration) and [command line arguments](#command-line-arguments) are described in detail below.
 
@@ -134,12 +134,13 @@ Instructions for installing wolkd on a Raspberry Pi:
 - Add user `wolk`: https://www.raspberrypi.org/documentation/linux/usage/users.md
   - `sudo adduser wolk`
   - `sudo usermod -a -G sudo,audio,video,users,netdev,input,spi,i2c,gpio wolk`
+- Login with user wolk, clone wolkd: `git clone https://github.com/bertspaan/wolkd.git`
 - Install Node.js: http://weworkweplay.com/play/raspberry-pi-nodejs/
 - Install screen: `sudo apt-get install screen`
 - Install nginx: https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md
 - Create wolkd daemon: http://www.slidequest.com/Taboca/70ang:
   1. `sudo npm install -g forever`
-  2. `sudo cp ./daemon/wolk /etc/init.d/wolkd`
+  2. `sudo cp ./daemon/wolkd /etc/init.d/wolkd`
   3. `sudo chmod 755 /etc/init.d/wolkd`
   4. `update-rc.d wolkd defaults`
 
