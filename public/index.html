@@ -69,9 +69,13 @@
       }
 
       function onStaticClick(event, pointer) {
+        // TODO: turn on/off item on click?!
         // console.log(onDragEnd)
         // console.log(this.element.id)
       }
+
+      var parentWidth = document.querySelector(container).offsetWidth;
+      // 140px;
 
       d3.json(url, function(patterns) {
         d3.select(container).selectAll('.drag')
@@ -79,6 +83,10 @@
           .enter()
             .append('div')
             .attr('class', 'border drag')
+            .style('left', function(d) {
+              var left = d.value * (parentWidth - 140);
+              return left + 'px';
+            })
             .html(function(d) {
               return d.title;
             })
@@ -110,8 +118,6 @@
 
       px = Math.abs(Math.round(px * 100) / 100);
       py = Math.abs(Math.round(py * 100) / 100);
-
-      console.log(px, py)
 
       wolkSend('searchlight', {
         x: px,
@@ -166,8 +172,6 @@
 
       oldMs = ms;
     });
-
-
 
   </script>
 </body>
