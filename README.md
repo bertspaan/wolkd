@@ -18,7 +18,7 @@ See [http://wolk.bike](http://wolk.bike) for more photos!
     cd wolkd
     npm install
 
-If your device has an SPI interface (Raspberry PIs have one!), you can install [node-spi](https://github.com/RussTheAerialist/node-spi):
+If your device has an SPI interface (Raspberry Pis have one!), you can install [node-spi](https://github.com/RussTheAerialist/node-spi):
 
     npm install spi
 
@@ -63,6 +63,8 @@ module.exports =  {
 ```
 
 ## Screens
+
+TODO: screens!
 
 ```
 exports.setPixel = function(pixel, r, g, b) {
@@ -138,14 +140,29 @@ Instructions for installing wolkd on a Raspberry Pi:
 - Install Node.js: http://weworkweplay.com/play/raspberry-pi-nodejs/
 - Install screen: `sudo apt-get install screen`
 - Install nginx: https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md
+- Add the following to the file `/etc/nginx/sites-available/wolkd`
+
+```
+server {
+    listen 80;
+    server_name wolk.local;
+    location / {
+        proxy_pass http://localhost:3000/;
+    }
+}
+```
+
+- `sudo ln -s /etc/nginx/sites-available/veldnamen /etc/nginx/sites-enabled && sudo service nginx restart`
 - Create wolkd daemon: http://www.slidequest.com/Taboca/70ang:
   1. `sudo npm install -g forever`
   2. `sudo cp ./daemon/wolkd /etc/init.d/wolkd`
   3. `sudo chmod 755 /etc/init.d/wolkd`
-  4. `update-rc.d wolkd defaults`
+  4. `sudo update-rc.d wolkd defaults`
 
 ## TODO
 
+- Add nginx config!
+- In UI, sliders should change when wolkd changes patterns/modifiers
 - Frame animations with configurable speed
 - Patterns either continuous (each frame) or per beat
 - Create _programs_, combinations of patterns that work well together
@@ -155,11 +172,12 @@ Instructions for installing wolkd on a Raspberry Pi:
 - Add [Open Pixel Control](http://openpixelcontrol.org/) support
 - Send output to [Fadecandy Controller board](https://github.com/scanlime/fadecandy)
 - Add websocket screen and HTML Canvas viewer
+- Make screens + patterns functions, supply buffer + color module
 
 ## See also
 
-- http://wolk.bike/
-- https://github.com/RussTheAerialist/node-spi
-- https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md
-- https://github.com/scanlime/fadecandy
-- https://learn.adafruit.com/led-art-with-fadecandy/intro
+- [http://wolk.bike/](http://wolk.bike/)
+- [https://github.com/RussTheAerialist/node-spi](https://github.com/RussTheAerialist/node-spi)
+- [https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md](https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md)
+- [https://github.com/scanlime/fadecandy](https://github.com/scanlime/fadecandy)
+- [https://learn.adafruit.com/led-art-with-fadecandy/intro](https://learn.adafruit.com/led-art-with-fadecandy/intro)
