@@ -127,19 +127,19 @@ You can override some of the options set in the configuration file with the foll
 
 Instructions for installing wolkd on a Raspberry Pi:
 
-- Installation: http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display
-- WiFi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+- Installation: [http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display](http://raspberrypi.stackexchange.com/questions/15192/installing-raspbian-from-noobs-without-display)
+- WiFi: [https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md)
 - Run `sudo raspi-config`
   - Enable SPI
   - Set locale
   - Set hostname to `wolk`
-- Add user `wolk`: https://www.raspberrypi.org/documentation/linux/usage/users.md
+- Add user `wolk`: [https://www.raspberrypi.org/documentation/linux/usage/users.md](https://www.raspberrypi.org/documentation/linux/usage/users.md)
   - `sudo adduser wolk`
   - `sudo usermod -a -G sudo,audio,video,users,netdev,input,spi,i2c,gpio wolk`
 - Login with user wolk, clone wolkd: `git clone https://github.com/bertspaan/wolkd.git`
-- Install Node.js: http://weworkweplay.com/play/raspberry-pi-nodejs/
+- Install Node.js: [http://weworkweplay.com/play/raspberry-pi-nodejs/](http://weworkweplay.com/play/raspberry-pi-nodejs/)
 - Install screen: `sudo apt-get install screen`
-- Install nginx: https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md
+- Install nginx: [https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md](https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md)
 - Add the following to the file `/etc/nginx/sites-available/wolkd`
 
 ```
@@ -153,7 +153,7 @@ server {
 ```
 
 - `sudo ln -s /etc/nginx/sites-available/veldnamen /etc/nginx/sites-enabled && sudo service nginx restart`
-- Create wolkd daemon: http://www.slidequest.com/Taboca/70ang:
+- Create wolkd daemon: [http://www.slidequest.com/Taboca/70ang](http://www.slidequest.com/Taboca/70ang):
   1. `sudo npm install -g forever`
   2. `sudo cp ./daemon/wolkd /etc/init.d/wolkd`
   3. `sudo chmod 755 /etc/init.d/wolkd`
@@ -161,6 +161,7 @@ server {
 
 ## TODO
 
+- Language files/config
 - Add nginx config!
 - In UI, sliders should change when wolkd changes patterns/modifiers
 - Frame animations with configurable speed
