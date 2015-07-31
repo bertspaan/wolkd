@@ -1,5 +1,5 @@
 module.exports =  {
-  title: 'Sinus',
+  title: 'Sine',
   length: 4,
   type: 'continuous',
   getPixel: function(beat, t) {

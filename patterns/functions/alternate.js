@@ -1,7 +1,5 @@
 module.exports =  {
   title: 'Flip-flop',
-  length: 2,
-  type: 'discrete',
   getPixel: function(beat, t, i) {
     var a = (beat % 2) === 0;
 

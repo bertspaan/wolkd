@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Regenboog',
+  title: 'Rainbow',
   frames: [
     [
       [230, 0, 0],

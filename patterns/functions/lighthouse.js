@@ -1,9 +1,7 @@
 var beamAngle = 45;
 
 module.exports =  {
-  title: 'Vuurtoren',
-  length: 4,
-  type: 'continuous',
+  title: 'Lighthouse',
   getPixel: function(beat, t, i, x, y) {
     var nt = t * 10 % 720;
 

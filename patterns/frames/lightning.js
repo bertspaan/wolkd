@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Bliksem',
+  title: 'Lightning',
   frames: [
     [
       [0, 0, 0],

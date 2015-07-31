@@ -1,7 +1,5 @@
 module.exports =  {
-  title: 'Blaasbalg',
-  length: 4,
-  type: 'continuous',
+  title: 'Bellows',
   getPixel: function(beat, t, i, x, y) {
     var dy = Math.abs(0.5 - y);
     var a = t % 100 / 100 * Math.PI * 2;

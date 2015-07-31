@@ -1,7 +1,5 @@
 module.exports =  {
   title: 'Left! Right!',
-  length: 2,
-  type: 'discrete',
   getPixel: function(beat, t, i, x) {
     var front = Math.round(beat) % 2 === 0;
 

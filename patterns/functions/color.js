@@ -1,7 +1,5 @@
 module.exports =  {
-  title: 'Eén kleur',
-  length: 4,
-  type: 'continuous',
+  title: 'One color',
   getPixel: function() {
     return [255, 0, 0];
   }

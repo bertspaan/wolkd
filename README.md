@@ -47,26 +47,56 @@ After starting wolkd, a web interface to control wolkd and mix patterns is avail
 
 ## Patterns
 
-TODO: functions, frames
-TODO: function signature
-TODO: animated GIFs
+wolkd supports two kinds of patterns:
+
+1. __Functions__: functions are executed every frame for each active pattern
+2. __Frames__: frames are hard-coded arrays of pixel colors.
+
+Function:
 
 ```js
 module.exports =  {
-  title: 'Pattern title',
-  length: 4,
-  type: 'continuous',
+  title: 'Function',
   getPixel: function(beat, t, i, x, y) {
+    // beat: beat number
+    // t: frame number
+    // i: pixel index
+    // x: x coordinate of pixel, according to mapping
+    // y: y coordinate of pixel, according to mapping
     return [r, g, b];
   }
 };
 ```
 
+Frames:
+
+```js
+module.exports = {
+  title: 'Frames',
+  frames: [
+    [
+      [0, 0, 0],     // Frame 1, pixel 1
+      [255, 0, 0],   // Frame 1, pixel 2
+      ...
+    ],
+    [
+      [0, 255, 0],   // Frame 2, pixel 1
+      [255, 255, 0], // Frame 2, pixel 2
+      ...
+    ],
+  ]
+};
+```
+
+TODO: animated GIFs!
+
 ## Screens
 
-TODO: screens!
+Each frame, wolkd outputs its pixel data to a screen. Currently, wolkd has two screens available: `spi` and `console`.
 
-```
+It's easy to add your own screens, by creating a JavaScript file in the [`screens`](screens) directory.
+
+```js
 exports.setPixel = function(pixel, r, g, b) {
   // Set RGB color of individual indexed pixel in buffer
 }
@@ -78,11 +108,13 @@ exports.update = function update() {
 
 ## Mappings
 
-TODO: mappings!
+wolkd uses a JSON mapping file to convert a pixel's LED strip index to its x and y coordinates (between 0 and 1). You can use [LED Strip Mapper](https://github.com/bertspaan/led-strip-mapper) to generate such patterns from an SVG file.
+
+You can find wolkd's mappings in the [`mappings`](mappings) directory
 
 ## Autopilot
 
-TODO: autopilot!
+Autopilot is __very smart__ and can create beautiful random patterns!
 
 ## Configuration
 
@@ -161,8 +193,7 @@ server {
 
 ## TODO
 
-- Language files/config
-- Add nginx config!
+- Language files/config for user interface
 - In UI, sliders should change when wolkd changes patterns/modifiers
 - Frame animations with configurable speed
 - Patterns either continuous (each frame) or per beat
@@ -173,7 +204,6 @@ server {
 - Add [Open Pixel Control](http://openpixelcontrol.org/) support
 - Send output to [Fadecandy Controller board](https://github.com/scanlime/fadecandy)
 - Add websocket screen and HTML Canvas viewer
-- Make screens + patterns functions, supply buffer + color module
 
 ## See also
 

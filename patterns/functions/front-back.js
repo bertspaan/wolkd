@@ -1,7 +1,5 @@
 module.exports =  {
   title: 'Front! Back!',
-  length: 2,
-  type: 'discrete',
   getPixel: function(beat, t, i, x, y) {
     var front = (beat % 2) === 0;
 
