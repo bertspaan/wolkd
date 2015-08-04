@@ -12,6 +12,8 @@ wolkd works well in conjunction with [LED Strip Mapper](https://github.com/berts
 
 See [http://wolk.bike](http://wolk.bike) for more photos!
 
+[![asciicast](https://asciinema.org/a/8juh4s3inn0pdwep6036rpgid.png)](https://asciinema.org/a/8juh4s3inn0pdwep6036rpgid)
+
 ## Installation
 
     git clone https://github.com/bertspaan/wolkd.git
