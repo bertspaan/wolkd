@@ -8,16 +8,19 @@ var patternReader = require('./lib/patterns');
 var modifierReader = require('./lib/modifiers');
 
 var argv = minimist(process.argv.slice(2), {
+  boolean: [
+    'autopilot'
+  ],
   default: {
     screen: config.screen || 'spi',
-    mapping: config.mapping
+    mapping: config.mapping,
+    autopilot: (config.autopilot && config.autopilot.enabled)
   }
 });
 
 var screen = require('./lib/screen')(config, argv.screen);
 var mapping = require(util.format('./mappings/%s.json', argv.mapping));
-
-var beat = 60 / config.bpm * 1000;
+var autopilotEnabled = argv.autopilot;
 
 patternReader(function(patterns) {
   modifierReader(function(modifiers) {
@@ -25,13 +28,15 @@ patternReader(function(patterns) {
     var searchlightTimeout;
 
     var autopilot;
-    if (config.autopilot.enabled) {
-      autopilot = require('./lib/autopilot')(config, animator, patterns, modifiers);
+    if (autopilotEnabled) {
+      autopilot = require('./lib/autopilot')(config, animator, patterns);
     }
 
     server.start(config, patterns, modifiers, function(e) {
-      if (autopilot) {
-        autopilot.reset();
+      if (e.event === 'pattern' || e.event === 'modifier') {
+        if (autopilot) {
+          autopilot.reset();
+        }
       }
 
       if (e.event === 'pattern') {
@@ -47,10 +52,10 @@ patternReader(function(patterns) {
 
         searchlightTimeout = setTimeout(function() {
           animator.setModifier('searchlight', 0, e.data);
-        }, 10000);
+        }, 2000);
 
         animator.setModifier('searchlight', 1, e.data);
       }
-    })
+    });
   });
 });

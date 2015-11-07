@@ -1,9 +1,7 @@
 var beamAngle = 45;
 
 module.exports =  {
-  title: 'Vuurtoren',
-  length: 4,
-  type: 'continuous',
+  title: 'Lighthouse',
   getPixel: function(beat, t, i, x, y) {
     var nt = t * 10 % 720;
 
@@ -16,7 +14,6 @@ module.exports =  {
       var dAngle = Math.abs(pixelAngle - lighthouseAngle) % 360;
       var r = dAngle > 180 ? 360 - dAngle : dAngle;
 
-
       if (r > beamAngle) {
         return [0, 0, 0];
       } else {
@@ -27,4 +24,4 @@ module.exports =  {
       return [0, 0, 0];
     }
   }
-}
+};

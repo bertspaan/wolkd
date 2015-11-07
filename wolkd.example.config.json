@@ -8,11 +8,12 @@
   },
   "autopilot": {
     "enabled": true,
-    "timeout": 60000
+    "inputTimeout": 120000,
+    "patternTimeout": 60000
   },
   "mapping": "st-bree",
   "screen": "spi",
-  "hostname": "bertwaag.local",
+  "hostname": "wolkd.local",
   "websocket": {
     "port": 8080
   },

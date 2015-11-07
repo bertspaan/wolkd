@@ -1,16 +1,12 @@
-var rgb = require('../../lib/color-utils').rgb;
-
 module.exports =  {
-  title: 'Voor! Achter!',
-  length: 2,
-  type: 'discrete',
+  title: 'Front! Back!',
   getPixel: function(beat, t, i, x, y) {
-    var front = beat % 2 == 0;
+    var front = (beat % 2) === 0;
 
     if (y <= 0.5) {
-      return front ? rgb.black : rgb.white;
+      return front ? [0, 0, 0] : [255, 255, 255];
     } else {
-      return front ? rgb.white : rgb.black;
+      return front ? [255, 255, 255] : [0, 0, 0];
     }
   }
 };
