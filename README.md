@@ -186,7 +186,7 @@ server {
 }
 ```
 
-- `sudo ln -s /etc/nginx/sites-available/veldnamen /etc/nginx/sites-enabled && sudo service nginx restart`
+- `sudo ln -s /etc/nginx/sites-available/wolkd /etc/nginx/sites-enabled && sudo service nginx restart`
 - Create wolkd daemon: [http://www.slidequest.com/Taboca/70ang](http://www.slidequest.com/Taboca/70ang):
   1. `sudo npm install -g forever`
   2. `sudo cp ./daemon/wolkd /etc/init.d/wolkd`
