@@ -2,7 +2,7 @@
 
 # wolkd
 
-Node.js server and user interface to control WS2801 RGB LED strips via SPI. Built to control [wolk.bike](http://wolk.bike), a __two-person bicycle sound system cloud__ commisioned by [Welcome to the Village 2015](http://welcometothevillage.nl/project/de-wolk).
+Node.js server and user interface to control WS2801 RGB LED strips via SPI. Built to control [wolk.bike](http://wolk.bike), a __two-person bicycle sound system cloud__ commissioned by [Welcome to the Village 2015](http://welcometothevillage.nl/project/de-wolk).
 
 wolkd can display mathematical functions, frame-by-frame animations (and even animated GIFs!) on RGB LED strips, and can be controlled via a [web interface](#user-interface) — with your laptop, smartphone or tablet. wolkd lets you write animations in terms of either a pixel's LED strip index or x and y coordinates using a [mapping file](#mappings). And wolkd has a 256 color ANSI terminal debug mode!
 
