@@ -13,7 +13,7 @@
   },
   "mapping": "st-bree",
   "screen": "spi",
-  "hostname": "wolkd.local",
+  "hostname": "localhost",
   "websocket": {
     "port": 8080
   },
