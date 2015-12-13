@@ -1,11 +1,16 @@
 var minimist = require('minimist');
 var util = require('util');
-var config = require(process.env.WOLKD_CONFIG);
+var config = require(process.env.WOLKD_CONFIG || die('Please specify path to config file in WOLKD_CONFIG environment variable'));
 var server = require('./lib/server');
 var animate = require('./lib/animate');
 
 var patternReader = require('./lib/patterns');
 var modifierReader = require('./lib/modifiers');
+
+function die(message) {
+  console.error(message);
+  process.exit(1);
+}
 
 var argv = minimist(process.argv.slice(2), {
   boolean: [
