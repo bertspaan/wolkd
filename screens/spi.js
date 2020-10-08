@@ -1,15 +1,17 @@
 require('dotenv').config()
 
-const SPI = require('spi')
+const spi = require('spi-device')
 const config = require(process.env.WOLKD_CONFIG)
 
-const spi = new SPI.Spi(config.spi.device, {
-  mode: SPI.MODE.MODE_0, // always set mode as the first option
-  chipSelect: SPI.CS.none // 'none', 'high' - defaults to low
-}, (s) => s.open())
+// TODO: read bus and devide ID from config!
+const device = spi.open(0, 0, (err) => {
+  if (err) {
+    console.error(err)
+  }
+})
 
 // Contains three byte for each pixel (one per color): first blue, then red, then green!
-var buffer = Buffer.alloc(config.pixels * 3)
+const buffer = Buffer.alloc(config.pixels * 3)
 
 exports.setPixel = function (pixel, r, g, b) {
   const s = pixel * 3
@@ -19,5 +21,12 @@ exports.setPixel = function (pixel, r, g, b) {
 }
 
 exports.update = function update () {
-  spi.write(buffer, () => {})
+  const message = [{
+    sendBuffer: buffer,
+    receiveBuffer: Buffer.alloc(config.pixels * 3),
+    byteLength: config.pixels * 3,
+    speedHz: 20000
+  }]
+
+  device.transfer(message, () => {})
 }

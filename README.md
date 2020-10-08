@@ -20,11 +20,11 @@ See [http://wolk.bike](http://wolk.bike) for more photos!
     cd wolkd
     npm install
 
-If your device has an SPI interface (Raspberry Pis have one!), you can install [node-spi](https://github.com/RussTheAerialist/node-spi):
+If your device has an SPI interface (Raspberry Pis have one!), you can install [spi-device](https://github.com/fivdi/spi-device):
 
-    npm install spi
+    npm install spi-device
 
-Please note: without node-spi, wolkd will run in console mode!
+Please note: without spi-device, wolkd will run in console mode!
 
 wolkd expects the environment variable `WOLKD_CONFIG` to point to the path of the wolkd configuration JSON file.
 
@@ -175,6 +175,18 @@ Instructions for installing wolkd on a Raspberry Pi:
 - Install screen: `sudo apt-get install screen`
 - Install nginx: [https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md](https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md)
 - Add the following to the file `/etc/nginx/sites-available/wolkd`
+
+
+WS2801 LEDs
+LED:
+  green: DAT -> MOSI -> PIN #19) -> 10 aan linker kant (usb onder)
+  yellow: CLK -> SCKL -> (PIN #23) -> 12 aan linker kant (usb onder)
+
+
+https://docs.microsoft.com/en-us/windows/iot-core/media/pinmappingsrpi/rp2_pinout.png
+
+
+
 
 ```
 server {
