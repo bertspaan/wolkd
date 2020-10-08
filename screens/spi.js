@@ -23,9 +23,8 @@ exports.setPixel = function (pixel, r, g, b) {
 exports.update = function update () {
   const message = [{
     sendBuffer: buffer,
-    receiveBuffer: Buffer.alloc(config.pixels * 3),
-    byteLength: config.pixels * 3,
-    speedHz: 20000
+    byteLength: config.pixels * 3
+    // speedHz: 20000
   }]
 
   device.transfer(message, () => {})
