@@ -1,19 +1,19 @@
-var Color = require('color');
+const Color = require('color')
 
-var max = 1;
+const max = 1
 
-module.exports =  {
+module.exports = {
   title: 'Noise',
   type: 'rgb',
-  getPixel: function(rgb, value) {
-    var color = Color().rgb(rgb);
-    var rand = (Math.random() * (value) * (max * 2) - max) * (color.lightness() / 100);
+  getPixel: (rgb, value) => {
+    const color = Color().rgb(rgb)
+    const rand = (Math.random() * (value) * (max * 2) - max) * (color.lightness() / 100)
     if (rand > 0) {
-      color.lighten(rand);
+      color.lighten(rand)
     } else {
-      color.darken(Math.abs(rand));
+      color.darken(Math.abs(rand))
     }
 
-    return color.rgbArray();
+    return color.rgb().array()
   }
-};
+}

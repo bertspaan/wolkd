@@ -1,11 +1,11 @@
-var Color = require('color');
+const Color = require('color')
 
-module.exports =  {
+module.exports = {
   title: 'Fill blue',
   type: 'rgb',
-  getPixel: function(rgb, value) {
-    var color = Color().rgb(rgb);
-    color.blue(value * 255);
-    return color.rgbArray();
+  getPixel: (rgb, value) => {
+    let color = Color().rgb(rgb)
+    color.blue(value * 255)
+    return color.rgb().array()
   }
-};
+}

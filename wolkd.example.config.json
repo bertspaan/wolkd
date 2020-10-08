@@ -7,7 +7,7 @@
     "device": "/dev/spidev0.0"
   },
   "autopilot": {
-    "enabled": true,
+    "enabled": false,
     "inputTimeout": 120000,
     "patternTimeout": 60000
   },

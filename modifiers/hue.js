@@ -1,11 +1,11 @@
-var Color = require('color');
+const Color = require('color')
 
-module.exports =  {
+module.exports = {
   title: 'Hue',
   type: 'rgb',
-  getPixel: function(rgb, value) {
-    var color = Color().rgb(rgb);
-    color.rotate(value * 360);
-    return color.rgbArray();
+  getPixel: (rgb, value) => {
+    var color = Color().rgb(rgb)
+    color.rotate(value * 360)
+    return color.rgb().array()
   }
-};
+}
