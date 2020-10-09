@@ -3,8 +3,7 @@ require('dotenv').config()
 const spi = require('spi-device')
 const config = require(process.env.WOLKD_CONFIG)
 
-// TODO: read bus and devide ID from config!
-const device = spi.open(0, 0, (err) => {
+const device = spi.open(config.spi.bus, config.spi.device, (err) => {
   if (err) {
     console.error(err)
   }
@@ -23,8 +22,8 @@ exports.setPixel = function (pixel, r, g, b) {
 exports.update = function update () {
   const message = [{
     sendBuffer: buffer,
-    byteLength: config.pixels * 3
-    // speedHz: 20000
+    byteLength: config.pixels * 3,
+    speedHz: config.spi.hz
   }]
 
   device.transfer(message, () => {})

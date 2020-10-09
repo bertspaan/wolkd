@@ -4,14 +4,16 @@
   "bpm": 120,
   "framesPerBeat": 16,
   "spi": {
-    "device": "/dev/spidev0.0"
+    "bus": 0,
+    "device": 0,
+    "hz": 150000
   },
   "autopilot": {
     "enabled": false,
     "inputTimeout": 120000,
     "patternTimeout": 60000
   },
-  "mapping": "st-bree",
+  "mapping": "grote-kamer",
   "screen": "spi",
   "hostname": "localhost",
   "websocket": {
